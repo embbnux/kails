@@ -1,0 +1,24 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="description" content="Kails blog")
+    meta(name="author" content="Embbnux")
+    title= title
+    link(rel='stylesheet' href=assetUrl('application.css'))
+    link(href="/favicon.png" rel="shortcut icon" type="image/png")
+    script(src=assetUrl('application.js'))
+  body
+    .blog-masthead
+      .container
+        nav.blog-nav
+          a.blog-nav-item(class=isActive('index', nav) href="/") Home
+          a.blog-nav-item(class=isActive('about', nav) href="/about") About
+    .container
+      block content
+    footer.blog-footer
+      p
+        | Power By Kail,
+        a(href="https://www.embbnux.com") @Embbnux

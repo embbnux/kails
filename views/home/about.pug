@@ -1,0 +1,12 @@
+extends ../layout/layout.pug
+
+block content
+  .blog-header
+    h1.blog-title
+      = title
+    p.lead.blog-description Welcome to #{title}
+  .row
+    .col-sm-8.blog-main
+      p about haha
+    .col-sm-3.col-sm-offset-1.blog-sidebar
+      include ../layout/sidebar
