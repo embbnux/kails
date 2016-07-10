@@ -5,8 +5,10 @@
   "scripts": {
     "start": "./node_modules/.bin/nodemon index.js & node_modules/.bin/webpack-dev-server --config config/webpack.config.js",
     "app": "node index.js",
+    "pm2": "NODE_ENV=production pm2 start index.js",
     "test": "NODE_ENV=test ./node_modules/.bin/mocha --compilers js:babel-core/register --recursive --harmony --require babel-polyfill",
-    "build": "node_modules/.bin/webpack --config config/webpack.config.js",
+    "assets_build": "node_modules/.bin/webpack --config config/webpack.config.js",
+    "assets_compile": "NODE_ENV=production node_modules/.bin/webpack --config config/webpack.config.js -p",
     "webpack_dev": "node_modules/.bin/webpack-dev-server --config config/webpack.config.js",
     "lint": "eslint . --ext .js",
     "db:migrate": "node_modules/.bin/sequelize db:migrate",

@@ -1,5 +1,5 @@
 #kails
-A Web App like rails with Koa2, webpack and postgres.
+A Web App like Ruby on Rails with Koa2, Webpack and Postgres.
 
 This project is like Ruby on Rails Project:
 * MVC
@@ -76,6 +76,10 @@ npm run app
 npm run lint
 # run test
 npm run test
+# deploy
+npm run assets_compile
+NODE_ENV=production npm run db:migrate
+npm run pm2
 ```
 
 ##Visit `http://localhost:3000/`
