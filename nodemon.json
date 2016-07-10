@@ -1,0 +1,7 @@
+{
+  "verbose": true,
+  "ignore": ["assets/*"],
+  "execMap": {
+    "js": "node --harmony"
+  }
+}

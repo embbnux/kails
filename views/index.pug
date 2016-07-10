@@ -1,0 +1,7 @@
+extends layout.pug
+
+block content
+  h1= title
+  p Welcome to #{title}
+  each article in articles
+    p= article.title

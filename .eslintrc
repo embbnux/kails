@@ -1,0 +1,27 @@
+{
+  "parser": "babel-eslint",
+  "root": true,
+  "rules": {
+    "new-cap": 0,
+    "strict": 0,
+    "no-underscore-dangle": 0,
+    "no-use-before-define": 1,
+    "eol-last": 1,
+    "indent": [2, 2, { "SwitchCase": 0 }],
+    "quotes": [2, "single"],
+    "linebreak-style": [2, "unix"],
+    "semi": [1, "never"],
+    "no-console": 1,
+    "no-unused-vars": [1, {
+      "argsIgnorePattern": "_",
+      "varsIgnorePattern": "^debug$|^assert$|^withTransaction$"
+    }]
+  },
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true,
+    "mocha": true
+  },
+  "extends": "eslint:recommended"
+}
