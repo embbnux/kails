@@ -3,3 +3,7 @@
 /.idea
 /public/assets
 /public/uploads
+/*-compiled.js
+/*-compiled.js.map
+*-compiled.js
+*-compiled.js.map

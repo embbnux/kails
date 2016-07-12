@@ -4,14 +4,25 @@ async function index(ctx, next) {
   const articles = await models.Article.findAll({
     include: [ models.User ]
   })
-  ctx.session.user_id = 1;
+  // ctx.session.userId = 4;
   const locals = {
-    title: 'koa2 title1',
+    title: 'Kails',
+    nav: 'index',
     articles: articles
   }
-  await ctx.render('index', locals)
+  await ctx.render('home/index', locals)
+}
+
+async function about(ctx, next) {
+  const locals = {
+    title: 'About | Kails',
+    nav: 'about'
+  }
+  console.log('haha')
+  await ctx.render('home/about', locals)
 }
 
 export default {
-  index: index
+  index: index,
+  about: about
 }

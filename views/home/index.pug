@@ -4,6 +4,7 @@ block content
   .blog-header
     h1.blog-title
       = title
+      = currentUser && currentUser.name
     p.lead.blog-description A new blog of #{title}
   .row
     .col-sm-8.blog-main

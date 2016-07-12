@@ -1,0 +1,17 @@
+extends ../layout/layout.pug
+
+block content
+  .blog-header.center-block
+    h1.blog-title.text-center
+      | Login To Kails
+  .row
+    form.form-signin
+      label.sr-only(for="inputEmail") Email address
+      input(type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus)
+      label(for="inputPassword" class="sr-only") Password
+      input(type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required)
+      //.checkbox
+      //label
+      //  input(type="checkbox" value="remember-me")
+      //  | Remember me
+      button(class="btn btn-lg btn-primary btn-block" type="submit") Sign in

@@ -1,5 +1,3 @@
 require('bootstrap/dist/css/bootstrap.css');
 require('../stylesheets/application.css');
-console.log('haha');
-console.log('haha');
-console.log('haha123');
+console.log('hello welcome to kails');

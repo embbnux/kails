@@ -10,6 +10,7 @@ import config from './config/config'
 import helpers from './helpers/index'
 import router from './routes/index'
 import koaRedis from 'koa-redis'
+import models from './models/index'
 
 const redisStore = koaRedis({
   url: config.redisUrl
@@ -32,8 +33,14 @@ app.use(convert(require('koa-static')(__dirname + '/public')))
 
 // add helpers for views
 app.use(async (ctx, next) => {
+  let currentUser = null
+  if(ctx.session.userId){
+    currentUser = await models.User.findById(ctx.session.userId)
+  }
   ctx.state = {
-    assetUrl: helpers.assetUrl
+    assetUrl: helpers.assetUrl,
+    isActive: helpers.isActive,
+    currentUser: currentUser
   }
   await next()
 })

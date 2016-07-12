@@ -13,6 +13,15 @@ function assetUrl(asset) {
   return url
 }
 
+function isActive(action, param) {
+  let active = ''
+  if(action == param){
+    active = 'active'
+  }
+  return active
+}
+
 export default {
-  assetUrl: assetUrl
+  assetUrl: assetUrl,
+  isActive: isActive
 }

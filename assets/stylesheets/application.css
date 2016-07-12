@@ -1,10 +1,12 @@
-/*
- * Globals
- */
+html {
+    position: relative;
+    min-height: 100%;
+}
 
 body {
     font-family: Georgia, "Times New Roman", Times, serif;
     color: #555;
+    margin-bottom: 100px;
 }
 
 h1, .h1,
@@ -20,20 +22,12 @@ h6, .h6 {
 }
 
 
-/*
- * Override Bootstrap's default container.
- */
-
 @media (min-width: 1200px) {
     .container {
         width: 970px;
     }
 }
 
-
-/*
- * Masthead for nav
- */
 
 .blog-masthead {
     background-color: #428bca;
@@ -150,18 +144,18 @@ h6, .h6 {
 }
 
 
-/*
- * Footer
- */
-
-.blog-footer {
+.footer {
     padding: 40px 0;
     color: #999;
     text-align: center;
     background-color: #f9f9f9;
     border-top: 1px solid #e5e5e5;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
 }
-.blog-footer p:last-child {
+.footer p:last-child {
     margin-bottom: 0;
 }
 
@@ -173,4 +167,39 @@ h6, .h6 {
     color: #fff;
     font-size: 90px;
     border-radius: 10px;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+.form-signin .checkbox {
+    font-weight: normal;
+}
+.form-signin .form-control {
+    position: relative;
+    height: auto;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="email"] {
+    margin-bottom: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
 }
