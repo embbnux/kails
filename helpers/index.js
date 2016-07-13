@@ -1,6 +1,14 @@
 import config from '../config/config.js'
-import manifest from '../public/assets/kails_manifest.json'
+import fs from 'fs'
+import path from 'path'
 
+let manifest = {}
+let manifestPath = path.resolve(__dirname, '../', 'public', 'assets', 'kails_manifest.json')
+if (fs.existsSync(manifestPath)) {
+  manifest = require('../public/assets/kails_manifest.json')
+}
+
+console.log(fs.existsSync(manifestPath))
 function assetUrl(asset) {
   const publicAsset = manifest[asset]
   let url = null

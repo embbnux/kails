@@ -1,7 +1,7 @@
 {
   "verbose": true,
-  "ignore": ["assets/*"],
-  "execMap": {
+  "ignore": ["assets/*", "public/assets/*.js", "public/assets/*.css"],
+  "execMap": {c
     "js": "node --harmony"
   }
 }
