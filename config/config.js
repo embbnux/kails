@@ -10,8 +10,7 @@ var configs = {
   production: production
 };
 var defaultConfig = {
-  env: env,
-  port: Number.parseInt(process.env.PORT, 10) || 3000
+  env: env
 };
 
 var config = _.merge(defaultConfig, configs[env]);
