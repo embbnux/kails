@@ -21,12 +21,12 @@ This project is like Ruby on Rails Project:
 ##How to Install
 
 ```bash
-# install nodejs
-# install redis and postgres
-# create postgres database:
-# for development {database: 'kails_dev', owner: 'kails_dev', password: 'kails_dev'}
-# for test {database: 'kails_test', owner: 'kails_tester', password: 'kails_tester'}
-# clone this project
+ install nodejs
+ install redis and postgres
+ create postgres database:
+ for development {database: 'kails_dev', owner: 'kails_dev', password: 'kails_dev'}
+ for test {database: 'kails_test', owner: 'kails_tester', password: 'kails_tester'}
+ clone this project
 ```
 
 ##Features
