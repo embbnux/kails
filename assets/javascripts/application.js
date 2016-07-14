@@ -1,3 +1,3 @@
 require('bootstrap/dist/css/bootstrap.css');
-require('../stylesheets/application.css');
-console.log('hello welcome to kails');
+require('bootstrap/dist/js/bootstrap');
+require('../stylesheets/base.css');
