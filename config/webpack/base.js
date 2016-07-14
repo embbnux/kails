@@ -11,19 +11,18 @@ module.exports = {
     application: './assets/javascripts/application.js'
   },
   module: {
-    loaders: [{
+    loaders: [
+    {
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      loader: 'babel-loader'
+      loader: ['babel-loader'],
+      query: {
+        presets: ['react', 'es2015']
+      }
     },{
       test: /\.coffee$/,
       exclude: /node_modules/,
       loader: 'coffee-loader'
-    },
-    {
-      test: /\.js$/,
-      exclude: /node_modules/,
-      loader: 'babel-loader'
     },
     {
       test: /\.(woff|woff2|eot|ttf|otf)\??.*$/,
@@ -51,6 +50,10 @@ module.exports = {
     filename: '[name]_bundle.js'
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
+    }),
     // new webpack.HotModuleReplacementPlugin(),
     new ManifestPlugin({
       fileName: 'kails_manifest.json'
