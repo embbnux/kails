@@ -51,7 +51,7 @@ module.exports = {
     filename: '[name]_bundle.js'
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    // new webpack.HotModuleReplacementPlugin(),
     new ManifestPlugin({
       fileName: 'kails_manifest.json'
     })
