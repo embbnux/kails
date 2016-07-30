@@ -4,7 +4,6 @@ var publicPath = path.resolve(__dirname, '../', '../', 'public', 'assets');
 var ManifestPlugin = require('webpack-manifest-plugin');
 var assetHost = require('../config').assetHost;
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   context: path.resolve(__dirname, '../', '../'),
@@ -57,9 +56,6 @@ module.exports = {
     // new webpack.HotModuleReplacementPlugin(),
     new ManifestPlugin({
       fileName: 'kails_manifest.json'
-    }),
-    new CopyWebpackPlugin([
-      { from: 'assets/images' },
-    ])
+    })
   ]
 };
