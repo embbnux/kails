@@ -1,5 +1,6 @@
 import Koa from 'koa'
 import session from 'koa-generic-session'
+import csrf from 'koa-csrf'
 import views from 'koa-views'
 import convert from 'koa-convert'
 import json from 'koa-json'
@@ -28,6 +29,7 @@ app.use(convert(session({
 
 app.use(bodyParser())
 app.use(convert(json()))
+app.use(convert(csrf()))
 app.use(convert(logger()))
 app.use(convert(require('koa-static')(__dirname + '/public')))
 
@@ -38,6 +40,7 @@ app.use(async (ctx, next) => {
     currentUser = await models.User.findById(ctx.session.userId)
   }
   ctx.state = {
+    csrf: ctx.csrf,
     assetUrl: helpers.assetUrl,
     isActive: helpers.isActive,
     currentUser: currentUser

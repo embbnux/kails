@@ -10,6 +10,8 @@ html
     link(rel='stylesheet' href=assetUrl('application.css'))
     block dynamicCss
     link(href="/favicon.png" rel="shortcut icon" type="image/png")
+    meta(name="csrf-param" content="_csrf")
+    meta(name="csrf-token" content=csrf)
   body
     .navbar
       .container

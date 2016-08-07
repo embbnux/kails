@@ -13,7 +13,12 @@ async function signIn(ctx, next) {
   await ctx.render('users/signIn', locals)
 }
 
+async function createSession(ctx, next) {
+	ctx.body = "csrf"
+}
+
 export default {
   index: index,
-  signIn: signIn
+  signIn: signIn,
+  createSession: createSession
 }

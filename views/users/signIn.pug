@@ -4,7 +4,8 @@ block content
   .center-block
     h1 Login To Kails
   .row
-    form.form-signin
+    form.form-signin(action="/users/sign_in" method="post")
+      input(type="hidden" name="_csrf" value=csrf)
       label.sr-only(for="inputEmail") Email address
       input(type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus)
       label(for="inputPassword" class="sr-only") Password
