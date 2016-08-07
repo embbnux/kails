@@ -1,14 +1,20 @@
 import models from '../models/index'
+import React from 'react'
+import { renderToString } from 'react-dom/server'
+import Articles from '../assets/javascripts/components/articles.jsx'
 
 async function index(ctx, next) {
   const articles = await models.Article.findAll({
     include: [ models.User ]
   })
-  // ctx.session.userId = 4;
+  const prerenderHtml = await renderToString(
+    <Articles articles={ articles } />
+  )
+  // ctx.session.userId = 4
   const locals = {
-    title: 'Kails',
     nav: 'index',
-    articles: articles
+    prerenderHtml: prerenderHtml,
+    preloadedState: { articles: articles }
   }
   await ctx.render('home/index', locals)
 }

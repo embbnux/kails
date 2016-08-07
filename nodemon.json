@@ -1,6 +1,6 @@
 {
   "verbose": true,
-  "ignore": ["assets", "public/assets", "public/assets"],
+  "ignore": ["assets", "public/assets/"],
   "execMap": {
     "js": "node --harmony"
   }

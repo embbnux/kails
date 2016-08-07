@@ -4,9 +4,16 @@ html {
 }
 
 body {
-  font-family: "PingFang SC", "PingHei", "Helvetica Neue", "Microsoft YaHei", SimHei, Helvetica, Arial, sans-serif !important;
-  color: #555;
+  font-family: "Helvetica Neue", "Microsoft YaHei", SimHei, Helvetica, Arial, sans-serif !important;
+  font-size: 15px;
+  color: #34495e;
+  line-height: 1.6;
   margin-bottom: 100px;
+}
+
+::selection {
+  color: #FFFFFF;
+  background-color: #42b983;
 }
 
 h1, .h1,
@@ -16,137 +23,82 @@ h4, .h4,
 h5, .h5,
 h6, .h6 {
   margin-top: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: normal;
-  color: #333;
+  font-weight: bold;
+  color: #34495e;
 }
 
-@media (min-width: 1200px) {
-  .container {
-    width: 970px;
-  }
+h1 {
+  font-size: 2em;
 }
 
-.blog-masthead {
-  background-color: #000;
-}
-
-/* Nav links */
-.blog-nav-item {
-  position: relative;
-  display: inline-block;
-  padding: 10px;
-  font-weight: 500;
-  color: #ddd;
-  -webkit-transition: all 0.45s;
-  -moz-transition: all 0.45s;
-  -ms-transition: all 0.45s;
-  -o-transition: all 0.45s;
-  transition: all 0.45s;
-}
-
-.blog-nav-item:hover,
-.blog-nav-item:focus {
-  color: #fff;
+a, a:active, a:hover {
+  color: #2c3e50;
   text-decoration: none;
 }
 
-/* Active state gets a caret at the bottom */
-.blog-nav .active {
-  color: #fff;
+a:hover {
+  border-bottom: 2px solid #42b983;
 }
 
-.blog-nav .active:after {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  width: 0;
-  height: 0;
-  margin-left: -5px;
-  vertical-align: middle;
-  content: " ";
-  border-right: 5px solid transparent;
-  border-bottom: 5px solid;
-  border-left: 5px solid transparent;
-}
-
-/*
- * Blog name and description
- */
-
-.blog-header {
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-.blog-title {
-  margin-top: 30px;
-  margin-bottom: 0;
-  font-size: 35px;
-  font-weight: normal;
-}
-
-.blog-description {
-  font-size: 15px;
-  color: #999;
-}
-
-/*
- * Main column and sidebar layout
- */
-
-.blog-main {
-  font-size: 18px;
-  line-height: 1.5;
-}
-
-/* Sidebar modules for boxing content */
-.sidebar-module {
-  padding: 15px;
-  margin: 0 -15px 15px;
-}
-
-.sidebar-module-inset {
-  padding: 15px;
-  background-color: #f5f5f5;
-  border-radius: 4px;
-}
-
-.sidebar-module-inset p:last-child,
-.sidebar-module-inset ul:last-child,
-.sidebar-module-inset ol:last-child {
-  margin-bottom: 0;
-}
-
-/* Pagination */
-.pager {
-  margin-bottom: 60px;
-  text-align: left;
-}
-
-.pager > li > a {
-  width: 140px;
-  padding: 10px 20px;
+.navbar .navbar-header {
+  float: none;
   text-align: center;
-  border-radius: 30px;
 }
 
-/*
- * Blog posts
- */
-
-.blog-post {
-  margin-bottom: 60px;
+.navbar .navbar-nav.navbar-right {
+  float: none;
+  text-align: center;
 }
 
-.blog-post-title {
-  margin-bottom: 5px;
-  font-size: 40px;
+.navbar .navbar-nav.navbar-right li{
+  display: inline-block;
 }
 
-.blog-post-meta {
-  margin-bottom: 20px;
-  color: #999;
+.navbar .container{
+  min-height: 160px;
+  padding: 20px 20px;
+}
+
+.navbar .navbar-nav li {
+  padding: 15px;
+}
+
+.navbar a.nav-item {
+  padding: 0;
+  color: #2c3e50;
+  text-decoration: none;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.navbar a.nav-item.active {
+  border-bottom: 2px solid #42b983;
+}
+
+.navbar a.nav-item:hover {
+  border-bottom: 2px solid #42b983;
+  background: transparent;
+}
+
+.navbar .nav-logo {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  background: #10c577;
+  color: #fff;
+  font-size: 30px;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.navbar .nav-name {
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.navbar .nav-logo:hover {
+  color: #fff;
 }
 
 .footer {
@@ -165,14 +117,38 @@ h6, .h6 {
   margin-bottom: 0;
 }
 
-#logo {
-  width: 128px;
-  height: 128px;
+.articles {
+  margin-top: 1em;
+}
+
+.articles .article {
+  padding: 1em 0.65em 2em;
+  border-bottom: 1px solid #ddd;
+}
+
+.article:last-child {
+    border-bottom: 0px;
+}
+
+.article .article-title {
+  margin: 0.65em 0;
+  color: #2c3e50;
+  font-size: 1.5em;
+}
+
+.article .article-info {
+  color: #7f8c8d;
+  margin: 1.2em 0;
+}
+
+.article .read-more {
+  color: #42b983;
+  border: none;
+  cursor: pointer;
+}
+
+.center-block {
   text-align: center;
-  background: #10c577;
-  color: #fff;
-  font-size: 90px;
-  border-radius: 10px;
 }
 
 .form-signin {
@@ -204,14 +180,31 @@ h6, .h6 {
   z-index: 2;
 }
 
-.form-signin input[type="email"] {
-  margin-bottom: 10px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
+.form-signin input {
+  margin-bottom: 15px;
 }
 
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+.form-signin button[type="submit"] {
+  margin-top: 40px;
 }
+
+@media (min-width: 768px) {
+  .container {
+    width: 710px;
+  }
+
+  .navbar .container{
+    min-height: 100px;
+  }
+
+  .navbar .navbar-header {
+    float: left;
+    text-align: left;
+  }
+
+  .navbar .navbar-nav.navbar-right {
+    float: right;
+    text-align: left;
+  }
+}
+

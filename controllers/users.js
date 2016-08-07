@@ -5,7 +5,12 @@ function index(ctx, next) {
 }
 
 async function signIn(ctx, next) {
-  await ctx.render('users/signIn', {})
+
+  const locals = {
+  	nav: 'signIn'
+  }
+
+  await ctx.render('users/signIn', locals)
 }
 
 export default {
