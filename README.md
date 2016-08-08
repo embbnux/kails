@@ -89,7 +89,21 @@ NODE_ENV=production npm run db:migrate
 npm run pm2
 ```
 
-##Visit `http://localhost:3000/`
+##Go to App console
+
+```
+$ npm run console
+> user = await models.User.findOne({ where: { email: 'kails@kails.org' } }).then(function(user) {console.log(user)})
+
+```
+
+##Start development environtment
+
+```
+$ npm run start
+#Visit `http://localhost:3000/`
+
+```
 
 ## Author
 * [Embbnux Ji](https://www.embbnux.com)

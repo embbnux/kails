@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "console": "node index.js console",
     "start": "./node_modules/.bin/nodemon index.js & node_modules/.bin/webpack --config config/webpack.config.js --progress --colors --watch",
     "app": "node index.js",
     "pm2": "NODE_ENV=production pm2 start index.js",
@@ -30,7 +31,7 @@
     "immutable": "^3.8.1",
     "jquery": "^2.2.4",
     "koa": "^2.0.0",
-    "koa-bodyparser": "^2.0.1",
+    "koa-bodyparser": "^3.2.0",
     "koa-convert": "^1.2.0",
     "koa-csrf": "^2.5.0",
     "koa-generic-session": "^1.11.1",

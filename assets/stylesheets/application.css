@@ -117,6 +117,19 @@ a:hover {
   margin-bottom: 0;
 }
 
+.request-error {
+  text-align: center;
+}
+
+.request-error h1 {
+  font-size: 3em;
+  padding: 20px;
+}
+
+.request-error h2 {
+  font-weight: normal;
+}
+
 .articles {
   margin-top: 1em;
 }

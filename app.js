@@ -29,9 +29,41 @@ app.use(convert(session({
 
 app.use(bodyParser())
 app.use(convert(json()))
-app.use(convert(csrf()))
 app.use(convert(logger()))
-app.use(convert(require('koa-static')(__dirname + '/public')))
+
+// not serve static when deploy
+if(config.serveStatic){
+  app.use(convert(require('koa-static')(__dirname + '/public')))
+}
+
+//views with pug
+app.use(views('./views', { extension: 'pug' }))
+
+// catch error
+app.use(async (ctx, next) => {
+  try {
+    await next()
+    if (ctx.status === 404) ctx.throw(404)
+  } catch(err) {
+    let status = err.status || 500
+    // let message = e.message || 'Server Error!'
+    ctx.status = status;
+    ctx.state = {
+      status: status,
+      assetUrl: helpers.assetUrl,
+      isActive: helpers.isActive,
+      currentUser: null
+    }
+    await ctx.render('error/error', {})
+    if (status == 500) {
+      console.log(err)
+      logger.error('server error', err, ctx)
+    }
+  }
+})
+
+// csrf
+app.use(convert(csrf()))
 
 // add helpers for views
 app.use(async (ctx, next) => {
@@ -47,8 +79,6 @@ app.use(async (ctx, next) => {
   }
   await next()
 })
-
-app.use(views('./views', { extension: 'pug' }))
 
 // logger
 app.use(async (ctx, next) => {
@@ -66,6 +96,16 @@ app.on('error', function(err, ctx){
   logger.error('server error', err, ctx)
 })
 
-app.listen(config.port)
+if (process.argv[2] && process.argv[2][0] == 'c') {
+  const repl = require('repl')
+  global.models = models
+  repl.start({
+    prompt: '> ',
+    useGlobal: true
+  }).on('exit', () => { process.exit()})
+}
+else {
+  app.listen(config.port)
+}
 
 export default app
