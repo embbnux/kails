@@ -24,7 +24,6 @@ async function about(ctx, next) {
     title: 'About | Kails',
     nav: 'about'
   }
-  console.log('haha')
   await ctx.render('home/about', locals)
 }
 

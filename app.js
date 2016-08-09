@@ -47,7 +47,7 @@ app.use(async (ctx, next) => {
   } catch(err) {
     let status = err.status || 500
     // let message = e.message || 'Server Error!'
-    ctx.status = status;
+    ctx.status = status
     ctx.state = {
       status: status,
       assetUrl: helpers.assetUrl,
@@ -102,7 +102,7 @@ if (process.argv[2] && process.argv[2][0] == 'c') {
   repl.start({
     prompt: '> ',
     useGlobal: true
-  }).on('exit', () => { process.exit()})
+  }).on('exit', () => { process.exit() })
 }
 else {
   app.listen(config.port)

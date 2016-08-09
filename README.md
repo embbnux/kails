@@ -93,8 +93,8 @@ npm run pm2
 
 ```
 $ npm run console
-> user = await models.User.findOne({ where: { email: 'kails@kails.org' } }).then(function(user) {console.log(user)})
-
+> models.User.create({ name: 'test', email: 'kails@kails.org', password: '12345678', passwordConfirmation: '12345678' }).then(function(user) { console.log(user) })
+> models.User.findOne({ where: { email: 'kails@kails.org' } }).then(function(user) { console.log(user) })
 ```
 
 ##Start development environtment

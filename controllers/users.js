@@ -1,7 +1,7 @@
 import models from '../models/index'
 
 function index(ctx, next) {
-  ctx.body = 'this a users response!' + ctx.session.userId;
+  ctx.body = 'this a users response!' + ctx.session.userId
 }
 
 function setLocals(message) {

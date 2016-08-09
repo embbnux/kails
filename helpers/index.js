@@ -8,7 +8,6 @@ if (fs.existsSync(manifestPath)) {
   manifest = require('../public/assets/kails_manifest.json')
 }
 
-console.log(fs.existsSync(manifestPath))
 function assetUrl(asset) {
   const publicAsset = manifest[asset]
   let url = null
