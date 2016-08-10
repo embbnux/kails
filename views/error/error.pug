@@ -1,6 +1,7 @@
 extends ../layout/layout.pug
 
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  .request-error
+    h1
+      | Something Wrong
+    h2= status

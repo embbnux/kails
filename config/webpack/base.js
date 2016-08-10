@@ -8,11 +8,11 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   context: path.resolve(__dirname, '../', '../'),
   entry: {
-    application: './assets/javascripts/application.js'
+    application: './assets/javascripts/application.js',
+    articles: './assets/javascripts/articles.js'
   },
   module: {
-    loaders: [
-    {
+    loaders: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
       loader: ['babel-loader'],

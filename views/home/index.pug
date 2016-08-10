@@ -1,16 +1,9 @@
 extends ../layout/layout.pug
 
 block content
-  .blog-header
-    h1.blog-title
-      = title
-      = currentUser && currentUser.name
-    p.lead.blog-description A new blog of #{title}
-  .row
-    .col-sm-8.blog-main
-      each article in articles
-        .blog-post
-          p= article.title
-
-    .col-sm-3.col-sm-offset-1.blog-sidebar
-      include ../layout/sidebar
+  #articles
+    != prerenderHtml
+block dynamicJs
+  script.
+    window.__PRELOADED_STATE__ = !{ JSON.stringify(preloadedState) }
+  script(src=assetUrl('articles.js'))
