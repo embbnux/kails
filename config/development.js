@@ -1,4 +1,4 @@
-const port = Number.parseInt(process.env.PORT, 10) || 3000
+const port = Number.parseInt(process.env.PORT, 10) || 1990
 module.exports = {
   port: port,
   hostName: 'http://localhost:' + port,
