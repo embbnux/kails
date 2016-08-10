@@ -12,6 +12,8 @@ This project is like Ruby on Rails Project:
 * Testing (mocha)
 * Lint (eslint)
 * middleware
+* console
+* server side render with react
 
 ##Requirements
 
@@ -45,8 +47,10 @@ This project is like Ruby on Rails Project:
 * [Babel](https://github.com/babel/babel)
 * [ES6]
 * [ESLint](http://eslint.org/)
+* [React](https://facebook.github.io/react/)
 
 ##Structure
+
 ```
 ├── app.js
 ├── assets
@@ -89,7 +93,21 @@ NODE_ENV=production npm run db:migrate
 npm run pm2
 ```
 
-##Visit `http://localhost:3000/`
+##Go to App console
+
+```
+$ npm run console
+> models.User.create({ name: 'test', email: 'kails@kails.org', password: '12345678', passwordConfirmation: '12345678' }).then(function(user) { console.log(user) })
+> models.User.findOne({ where: { email: 'kails@kails.org' } }).then(function(user) { console.log(user) })
+```
+
+##Start development environtment
+
+```
+$ npm run start
+#Visit `http://localhost:3000/`
+
+```
 
 ## Author
 * [Embbnux Ji](https://www.embbnux.com)

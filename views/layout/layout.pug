@@ -8,17 +8,30 @@ html
     meta(name="author" content="Embbnux")
     title= title
     link(rel='stylesheet' href=assetUrl('application.css'))
+    block dynamicCss
     link(href="/favicon.png" rel="shortcut icon" type="image/png")
-    script(src=assetUrl('application.js'))
+    meta(name="csrf-param" content="_csrf")
+    meta(name="csrf-token" content=csrf)
   body
-    .blog-masthead
+    .navbar
       .container
-        nav.blog-nav
-          a.blog-nav-item(class=isActive('index', nav) href="/") Home
-          a.blog-nav-item(class=isActive('about', nav) href="/about") About
+        .navbar-header
+          a.nav-logo(href="/") K
+          a.nav-name(href="/") Kails
+        ul.nav.navbar-nav.navbar-right
+          li
+            a.nav-item(class=isActive('index', nav) href="/") Home
+          li 
+            a.nav-item(class=isActive('about', nav) href="/about") About
+          li 
+            a.nav-item(class=isActive('signIn', nav) href="/users/sign_in") SignIn
+          li 
+            a.nav-item(class=isActive('signUp', nav) href="/users/sign_up") SignUp
     .container
       block content
     footer.footer
       p
-        | Power By Kail,
+        | Power By Kail, &nbsp;&nbsp;
         a(href="https://www.embbnux.com") @Embbnux
+    script(src=assetUrl('application.js'))
+    block dynamicJs
