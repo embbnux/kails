@@ -12,13 +12,28 @@ function setLocals(message) {
 }
 
 async function signIn(ctx, next) {
+  if(ctx.isUserSignIn){
+    ctx.status = 302
+    ctx.redirect('/')
+    return
+  }
   const locals = {
     nav: 'signIn'
   }
   await ctx.render('users/signIn', locals)
 }
 
-async function createSession(ctx, next) {
+async function LogOut(ctx, next) {
+  if(!ctx.isUserSignIn){
+    ctx.status = 302
+    ctx.redirect('/')
+    return
+  }
+  ctx.session.userId = null
+  ctx.redirect('/')
+}
+
+async function LogIn(ctx, next) {
   const body = ctx.request.body
   if (!(body.email && body.password)) {
     const locals = setLocals('params error.')
@@ -39,5 +54,6 @@ async function createSession(ctx, next) {
 export default {
   index: index,
   signIn: signIn,
-  createSession: createSession
+  LogIn: LogIn,
+  LogOut: LogOut
 }

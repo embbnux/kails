@@ -20,14 +20,14 @@ This project is like Ruby on Rails Project:
 * node __^4.0.0__
 * npm __^3.0.0__
 
-##How to Install
+## How to Install
 
 ```bash
  install nodejs
  install redis and postgres
  create postgres database:
- for development {database: 'kails_dev', owner: 'kails_dev', password: 'kails_dev'}
- for test {database: 'kails_test', owner: 'kails_tester', password: 'kails_tester'}
+ for development { database: 'kails_dev', owner: 'kails_dev', password: 'kails_dev' }
+ for test { database: 'kails_test', owner: 'kails_tester', password: 'kails_tester' }
  clone this project
 ```
 
@@ -93,7 +93,7 @@ NODE_ENV=production npm run db:migrate
 npm run pm2
 ```
 
-##Go to App console
+## Go to App console
 
 ```
 $ npm run console
@@ -105,7 +105,7 @@ $ npm run console
 
 ```
 $ npm run start
-#Visit `http://localhost:3000/`
+# Visit `http://localhost:3000/`
 
 ```
 
