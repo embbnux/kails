@@ -92,6 +92,20 @@ a:hover {
   background: transparent;
 }
 
+.navbar .navbar-nav .user-menu li {
+  display: block;
+  padding: 5px;
+}
+
+.navbar .navbar-nav .user-menu li:hover {
+  background-color: #f5f5f5;
+}
+
+.navbar .navbar-nav .user-menu a:hover {
+  background: transparent;
+  border-bottom: none;
+}
+
 .navbar .nav-logo {
   display: inline-block;
   width: 50px;
