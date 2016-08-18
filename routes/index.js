@@ -1,9 +1,15 @@
-import Router from 'koa-router'
-import home from './home'
-import users from './users'
+const fs = require('fs');
+const router = require('koa-router')();
 
-const router = Router()
-router.use('/', home.routes(), home.allowedMethods())
-router.use('/users', users.routes(), users.allowedMethods)
+const routes = () => {
+	const files = fs.readdirSync(__dirname);
+	const indexNumber = files.indexOf('index.js');
+	files.splice(indexNumber, 1);
+	return files.map(file => require('./' + file));
+}
+
+routes().forEach((route) => {
+  router.use(route.routes(), route.allowedMethods());
+})
 
 export default router
