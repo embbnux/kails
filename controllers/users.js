@@ -12,8 +12,7 @@ function setLocals(message) {
 }
 
 async function signIn(ctx, next) {
-  if(ctx.isUserSignIn){
-    ctx.status = 302
+  if(ctx.state.isUserSignIn){
     ctx.redirect('/')
     return
   }
@@ -24,8 +23,7 @@ async function signIn(ctx, next) {
 }
 
 async function LogOut(ctx, next) {
-  if(!ctx.isUserSignIn){
-    ctx.status = 302
+  if(!ctx.state.isUserSignIn){
     ctx.redirect('/')
     return
   }

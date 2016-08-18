@@ -5,6 +5,10 @@ function ArticleModel(sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
+    userId: {
+      type: DataTypes.INTEGER,
+      field: 'user_id'
+    },
     title: {
       type: DataTypes.STRING,
       validate: {

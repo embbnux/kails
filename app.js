@@ -5,6 +5,7 @@ import views from 'koa-views'
 import convert from 'koa-convert'
 import json from 'koa-json'
 import bodyParser from 'koa-bodyparser'
+import methodOverride from 'koa-methodoverride'
 import logger from 'koa-logger'
 
 import config from './config/config'
@@ -28,6 +29,14 @@ app.use(convert(session({
 })))
 
 app.use(bodyParser())
+app.use(methodOverride((req, res) => {
+  if (req.body && (typeof req.body === 'object') && ('_method' in req.body)) {
+    // look in urlencoded POST bodies and delete it
+    const method = req.body._method
+    delete req.body._method
+    return method
+  }
+}))
 app.use(convert(json()))
 app.use(convert(logger()))
 
@@ -71,14 +80,12 @@ app.use(async (ctx, next) => {
   if(ctx.session.userId){
     currentUser = await models.User.findById(ctx.session.userId)
   }
-  ctx.currentUser = currentUser
-  ctx.isUserSignIn = (currentUser != null)
   ctx.state = {
     csrf: ctx.csrf,
     assetUrl: helpers.assetUrl,
     isActive: helpers.isActive,
     currentUser: currentUser,
-    isUserSignIn: ctx.isUserSignIn
+    isUserSignIn: (currentUser != null)
   }
   await next()
 })
