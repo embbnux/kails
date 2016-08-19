@@ -9,5 +9,5 @@ router.get('/sign_in', users.signIn)
 router.post('/sign_in', users.LogIn)
 router.get('/logout', users.LogOut)
 
-// for reqiure auto in index.js
+// for require auto in index.js
 module.exports = router

@@ -15,5 +15,4 @@ fs
     router.use(route.routes(), route.allowedMethods())
   })
 
-// for reqiure auto in index.js
 export default router

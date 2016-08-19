@@ -10,5 +10,5 @@ router.put('/:id', articles.checkLogin, articles.checkArticleOwner, articles.che
 router.get('/:id/edit', articles.checkLogin, articles.checkArticleOwner, articles.edit)
 router.post('/', articles.checkLogin, articles.checkParamsBody, articles.create)
 
-// for reqiure auto in index.js
+// for require auto in index.js
 module.exports = router
