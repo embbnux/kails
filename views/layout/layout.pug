@@ -6,7 +6,9 @@ html
     meta(name="viewport" content="width=device-width, initial-scale=1")
     meta(name="description" content="Kails blog")
     meta(name="author" content="Embbnux")
-    title= title
+    title
+      = title || 'Home'
+      = ' | Kails'
     link(rel='stylesheet' href=assetUrl('application.css'))
     block dynamicCss
     link(href="/favicon.png" rel="shortcut icon" type="image/png")
@@ -18,15 +20,26 @@ html
         .navbar-header
           a.nav-logo(href="/") K
           a.nav-name(href="/") Kails
-        ul.nav.navbar-nav.navbar-right
-          li
-            a.nav-item(class=isActive('index', nav) href="/") Home
-          li 
-            a.nav-item(class=isActive('about', nav) href="/about") About
-          li 
-            a.nav-item(class=isActive('signIn', nav) href="/users/sign_in") SignIn
-          li 
-            a.nav-item(class=isActive('signUp', nav) href="/users/sign_up") SignUp
+        .navbar-container
+          ul.nav.navbar-nav.navbar-menu
+            li
+              a.nav-item(class=isActive('index', nav) href="/") Home
+            li
+              a.nav-item(class=isActive('about', nav) href="/about") About
+          ul.nav.navbar-nav.navbar-right
+            - if(!isUserSignIn)
+              li
+                a.nav-item(class=isActive('signIn', nav) href="/users/sign_in") SignIn
+            - else
+              li(class="dropdown")
+                a.nav-item.dropdown-toggle(href="#" data-toggle="dropdown")
+                  = currentUser.name
+                  b(class="caret")
+                ul(class="dropdown-menu user-menu")
+                  li
+                    a(href="/users/logout") Logout
+            //- li
+            //-   a.nav-item(class=isActive('signUp', nav) href="/users/sign_up") SignUp
     .container
       block content
     footer.footer

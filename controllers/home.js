@@ -5,13 +5,15 @@ import Articles from '../assets/javascripts/components/articles.jsx'
 
 async function index(ctx, next) {
   const articles = await models.Article.findAll({
-    include: [ models.User ]
+    include: [ models.User ],
+    order: 'created_at DESC'
   })
   const prerenderHtml = await renderToString(
     <Articles articles={ articles } />
   )
   // ctx.session.userId = 4
   const locals = {
+    title: 'Home',
     nav: 'index',
     prerenderHtml: prerenderHtml,
     preloadedState: { articles: articles }
@@ -21,7 +23,7 @@ async function index(ctx, next) {
 
 async function about(ctx, next) {
   const locals = {
-    title: 'About | Kails',
+    title: 'About',
     nav: 'about'
   }
   await ctx.render('home/about', locals)

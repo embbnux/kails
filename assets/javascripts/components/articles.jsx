@@ -9,7 +9,7 @@ class Articles extends Component {
   render() {
     let articles = this.props.articles.map((item, key) => {
       return (
-        <Article title={ item.title } key={ key } />
+        <Article article={ item } key={ key } />
       )
     })
     return(

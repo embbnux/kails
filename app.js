@@ -71,11 +71,14 @@ app.use(async (ctx, next) => {
   if(ctx.session.userId){
     currentUser = await models.User.findById(ctx.session.userId)
   }
+  ctx.currentUser = currentUser
+  ctx.isUserSignIn = (currentUser != null)
   ctx.state = {
     csrf: ctx.csrf,
     assetUrl: helpers.assetUrl,
     isActive: helpers.isActive,
-    currentUser: currentUser
+    currentUser: currentUser,
+    isUserSignIn: ctx.isUserSignIn
   }
   await next()
 })

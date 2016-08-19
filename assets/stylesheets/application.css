@@ -43,13 +43,25 @@ a:hover {
 .navbar .navbar-header {
   float: none;
   text-align: center;
+  margin-bottom: 10px;
 }
 
-.navbar .navbar-nav.navbar-right {
-  float: none;
+.navbar-container {
   text-align: center;
 }
 
+.navbar .navbar-nav {
+  margin-top: 2px;
+}
+
+.navbar .navbar-nav.navbar-menu,
+.navbar .navbar-nav.navbar-right {
+  float: none;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.navbar .navbar-nav.navbar-menu li,
 .navbar .navbar-nav.navbar-right li{
   display: inline-block;
 }
@@ -207,12 +219,17 @@ a:hover {
   }
 
   .navbar .container{
-    min-height: 100px;
+    min-height: 110px;
+  }
+
+  .navbar-container {
+    text-align: left;
   }
 
   .navbar .navbar-header {
     float: left;
     text-align: left;
+    margin-right: 20px;
   }
 
   .navbar .navbar-nav.navbar-right {
