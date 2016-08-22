@@ -84,6 +84,8 @@ app.use(async (ctx, next) => {
     csrf: ctx.csrf,
     assetUrl: helpers.assetUrl,
     isActive: helpers.isActive,
+    timeAgo: helpers.timeAgo,
+    formatDate: helpers.formatDate,
     currentUser: currentUser,
     isUserSignIn: (currentUser != null)
   }

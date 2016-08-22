@@ -9,7 +9,13 @@ block content
           input(type="hidden" name="_csrf" value=csrf)
           input(type="hidden" name="_method" value='put')
           input(type="text" name="title" class="form-control" placeholder="Article Title" value=article.title required autofocus)
+        .article-description
+          textarea(name="description" class="form-control" placeholder="Article Description" value=article.description required autofocus)
         .article-content
-          textarea(class="textarea" name="content" placeholder="Article Content" class="form-control")
+          textarea(name="content" placeholder="Article Content" class="textarea form-control" id="article-editor")
             = article.content
         button(class="btn btn-info btn-block" type="submit") Save
+block dynamicJs
+  script(src=assetUrl('editor.js'))
+block dynamicCss
+  link(rel='stylesheet' href=assetUrl('editor.css'))

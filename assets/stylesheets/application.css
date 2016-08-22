@@ -92,6 +92,10 @@ a:hover {
   background: transparent;
 }
 
+.navbar .dropdown a.nav-item:hover {
+  border-bottom: none;
+}
+
 .navbar .navbar-nav .user-menu li {
   display: block;
   padding: 5px;
@@ -154,36 +158,6 @@ a:hover {
 
 .request-error h2 {
   font-weight: normal;
-}
-
-.articles {
-  margin-top: 1em;
-}
-
-.articles .article {
-  padding: 1em 0.65em 2em;
-  border-bottom: 1px solid #ddd;
-}
-
-.article:last-child {
-    border-bottom: 0px;
-}
-
-.article .article-title {
-  margin: 0.65em 0;
-  color: #2c3e50;
-  font-size: 1.5em;
-}
-
-.article .article-info {
-  color: #7f8c8d;
-  margin: 1.2em 0;
-}
-
-.article .read-more {
-  color: #42b983;
-  border: none;
-  cursor: pointer;
 }
 
 .center-block {

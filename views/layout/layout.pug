@@ -4,8 +4,8 @@ html
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name="viewport" content="width=device-width, initial-scale=1")
-    meta(name="description" content="Kails blog")
-    meta(name="author" content="Embbnux")
+    meta(name="description" content=(description || "Kails Blog"))
+    meta(name="author" content=(author || "Embbnux"))
     title
       = title || 'Home'
       = ' | Kails'
@@ -46,7 +46,7 @@ html
       block content
     footer.footer
       p
-        | Power By Kail, &nbsp;&nbsp;
-        a(href="https://www.embbnux.com") @Embbnux
+        | Power By Kail, &nbsp;
+        a(href="https://kails.org") &copy; Kails
     script(src=assetUrl('application.js'))
     block dynamicJs

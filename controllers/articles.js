@@ -1,4 +1,5 @@
 import models from '../models/index'
+import { markdown } from '../helpers/markdown'
 
 async function show(ctx, next) {
   const article = await models.Article.findById(ctx.params.id)
@@ -6,10 +7,17 @@ async function show(ctx, next) {
     ctx.redirect('/')
     return
   }
+  const author = await models.User.findById(article.userId)
+  let canEdit = ctx.state.isUserSignIn && ctx.state.currentUser.id === author.id
+  const articleHtml = await markdown(article.content)
   const locals = {
+    nav: 'article',
     title: article.title,
+    description: article.description,
     article: article,
-    nav: 'article'
+    articleHtml: articleHtml,
+    canEdit: canEdit,
+    author: author
   }
   await ctx.render('articles/show', locals)
 }
@@ -71,7 +79,7 @@ async function checkArticleOwner(ctx, next) {
 
 async function checkParamsBody(ctx, next) {
   const body = ctx.request.body
-  if (!(body.title && body.content)) {
+  if (!(body.title && body.content && body.description)) {
     const locals = {
       nav: 'articleNew',
       message: 'params error'
@@ -85,6 +93,7 @@ async function checkParamsBody(ctx, next) {
   }
   ctx.state.articleParams = {
     title: body.title,
+    description: body.description,
     content: body.content
   }
   await next()
