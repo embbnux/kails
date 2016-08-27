@@ -30,8 +30,8 @@ var database = {
     host: process.env.DATABASE_HOST_PRO,
     dialect: 'postgres',
     pool: {
-      max: 5,
-      min: 2,
+      max: 10,
+      min: 5,
       idle: 30000
     }
   }
