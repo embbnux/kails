@@ -31,7 +31,7 @@ This project is like Ruby on Rails Project:
  clone this project
 ```
 
-##Features
+## Features
 
 * [koa2](https://github.com/koajs/koa/tree/v2.x)
 * [koa-bodyparser](https://github.com/koajs/bodyparser)
@@ -49,7 +49,7 @@ This project is like Ruby on Rails Project:
 * [ESLint](http://eslint.org/)
 * [React](https://facebook.github.io/react/)
 
-##Structure
+## Structure
 
 ```
 ├── app.js
@@ -73,7 +73,7 @@ This project is like Ruby on Rails Project:
 └── views
 ```
 
-##Usage
+## Usage
 
 ```
 npm install
@@ -101,7 +101,7 @@ $ npm run console
 > models.User.findOne({ where: { email: 'kails@kails.org' } }).then(function(user) { console.log(user) })
 ```
 
-##Start development environtment
+## Start development environtment
 
 ```
 $ npm run start
