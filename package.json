@@ -9,6 +9,8 @@
     "pm2": "NODE_ENV=production ./node_modules/.bin/pm2 start index.js -i 2 --name \"kails\" --max-memory-restart 300M",
     "pm2:restart": "NODE_ENV=production ./node_modules/.bin/pm2 restart \"kails\"",
     "pm2:stop": "NODE_ENV=production ./node_modules/.bin/pm2 stop \"kails\"",
+    "pm2:monit": "NODE_ENV=production ./node_modules/.bin/pm2 monit \"kails\"",
+    "pm2:logs": "NODE_ENV=production ./node_modules/.bin/pm2 logs \"kails\"",
     "test": "NODE_ENV=test ./node_modules/.bin/mocha --compilers js:babel-core/register --recursive --harmony --require babel-polyfill",
     "assets_build": "node_modules/.bin/webpack --config config/webpack.config.js",
     "assets_compile": "NODE_ENV=production node_modules/.bin/webpack --config config/webpack.config.js -p",
@@ -74,6 +76,7 @@
     "xss": "^0.2.13"
   },
   "devDependencies": {
+    "babel-cli": "^6.14.0",
     "babel-eslint": "^6.1.2",
     "babel-loader": "^6.2.4",
     "babel-register": "^6.9.0",

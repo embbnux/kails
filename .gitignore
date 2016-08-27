@@ -1,6 +1,7 @@
 /node_modules
 /*.log
 /.idea
+/build
 /public/assets
 /public/uploads
 /*-compiled.js
