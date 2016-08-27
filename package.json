@@ -6,7 +6,7 @@
     "console": "node index.js console",
     "start": "./node_modules/.bin/nodemon index.js & node_modules/.bin/webpack --config config/webpack.config.js --progress --colors --watch",
     "app": "node index.js",
-    "pm2": "NODE_ENV=production ./node_modules/.bin/pm2 start index.js -i 2 --name \"kails\" --max-memory-restart 300M",
+    "pm2": "NODE_ENV=production ./node_modules/.bin/pm2 start index.js -i 2 --name \"kails\" --max-memory-restart 300M --merge-logs --log-date-format=\"YYYY-MM-DD HH:mm Z\" --output=\"log/production.log\"",
     "pm2:restart": "NODE_ENV=production ./node_modules/.bin/pm2 restart \"kails\"",
     "pm2:stop": "NODE_ENV=production ./node_modules/.bin/pm2 stop \"kails\"",
     "pm2:monit": "NODE_ENV=production ./node_modules/.bin/pm2 monit \"kails\"",
