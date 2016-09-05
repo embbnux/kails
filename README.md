@@ -112,6 +112,8 @@ $ npm run start
 ## Author
 * [Embbnux Ji](https://www.embbnux.com)
 
+## Blog
+* [What about Kails](https://www.embbnux.com/2016/09/04/kails_with_koa2_like_ruby_on_rails/)
 
 ## License
 MIT
