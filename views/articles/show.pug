@@ -5,8 +5,18 @@ block content
     article.article
       h1.article-title
         = article.title
-      .article-info 
-        | about haha
-      .article-content
+      .article-info
+        span
+          | Post at: &nbsp;
+          = timeAgo(article.created_at)
+        span
+          | Author: &nbsp;
+          = author.name
+        - if(canEdit)
+          span
+            a(href=`/articles/${article.id}/edit`) Edit
+      .article-description
         p
-          = article.content
+          = article.description
+      .article-content
+        != articleHtml

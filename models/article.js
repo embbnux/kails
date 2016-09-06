@@ -5,6 +5,10 @@ function ArticleModel(sequelize, DataTypes) {
       primaryKey: true,
       autoIncrement: true
     },
+    userId: {
+      type: DataTypes.INTEGER,
+      field: 'user_id'
+    },
     title: {
       type: DataTypes.STRING,
       validate: {
@@ -12,14 +16,31 @@ function ArticleModel(sequelize, DataTypes) {
         len: [1, 50]
       }
     },
+    description: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: true,
+        len: [1, 200]
+      }
+    },
     content: {
       type: DataTypes.TEXT,
       validate: {
         notEmpty: true
       }
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      field: 'created_at'
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      field: 'updated_at'
     }
   },{
     underscored: true,
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
     tableName: 'articles',
     classMethods: {
       associate: function(models) {

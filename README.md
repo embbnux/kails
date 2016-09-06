@@ -1,4 +1,4 @@
-#kails
+# Kails
 A Web App like Ruby on Rails with Koa2, Webpack and Postgres.
 
 This project is like Ruby on Rails Project:
@@ -15,7 +15,7 @@ This project is like Ruby on Rails Project:
 * console
 * server side render with react
 
-##Requirements
+## Requirements
 
 * node __^4.0.0__
 * npm __^3.0.0__
@@ -31,7 +31,7 @@ This project is like Ruby on Rails Project:
  clone this project
 ```
 
-##Features
+## Features
 
 * [koa2](https://github.com/koajs/koa/tree/v2.x)
 * [koa-bodyparser](https://github.com/koajs/bodyparser)
@@ -49,7 +49,7 @@ This project is like Ruby on Rails Project:
 * [ESLint](http://eslint.org/)
 * [React](https://facebook.github.io/react/)
 
-##Structure
+## Structure
 
 ```
 ├── app.js
@@ -73,7 +73,7 @@ This project is like Ruby on Rails Project:
 └── views
 ```
 
-##Usage
+## Usage
 
 ```
 npm install
@@ -101,7 +101,7 @@ $ npm run console
 > models.User.findOne({ where: { email: 'kails@kails.org' } }).then(function(user) { console.log(user) })
 ```
 
-##Start development environtment
+## Start development environtment
 
 ```
 $ npm run start
@@ -112,6 +112,8 @@ $ npm run start
 ## Author
 * [Embbnux Ji](https://www.embbnux.com)
 
+## Blog
+* [What about Kails](https://www.embbnux.com/2016/09/04/kails_with_koa2_like_ruby_on_rails/)
 
-##License
+## License
 MIT

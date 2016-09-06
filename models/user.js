@@ -42,7 +42,7 @@ export default function(sequelize, DataTypes) {
   },{
     underscored: true,
     tableName: 'users',
-    indexes: [{unique: true, fields: ['email']}],
+    indexes: [{ unique: true, fields: ['email'] }],
     classMethods: {
       associate: function(models) {
         User.hasMany(models.Article, { foreignKey: 'user_id' })

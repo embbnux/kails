@@ -9,7 +9,8 @@ module.exports = {
   context: path.resolve(__dirname, '../', '../'),
   entry: {
     application: './assets/javascripts/application.js',
-    articles: './assets/javascripts/articles.js'
+    articles: './assets/javascripts/articles.js',
+    editor: './assets/javascripts/editor.js'
   },
   module: {
     loaders: [{

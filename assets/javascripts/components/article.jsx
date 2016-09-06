@@ -1,4 +1,5 @@
 import React, { Component }  from 'react'
+import TimeAgo from 'react-timeago'
 
 class Article extends Component {
   constructor(props) {
@@ -7,7 +8,7 @@ class Article extends Component {
 
   render() {
     let article = this.props.article
-    let articleLink = '/articles/' + article.id
+    let articleLink = `/articles/${article.id}`
     return (
       <article className="article">
         <h2 className="article-title">
@@ -16,11 +17,14 @@ class Article extends Component {
           </a>
         </h2>
         <div className="article-info">
-          Jul 21, 2016
+          Posted at: &nbsp;
+          <TimeAgo date={ article.createdAt } />
+          , &nbsp;
+          { article.User && article.User.name }
         </div>
-        <div className="article-content">
+        <div className="article-description">
           <p>
-            { article.content }
+            { article.description }
           </p>
         </div>
         <a href={ articleLink } className="read-more">...more</a>
