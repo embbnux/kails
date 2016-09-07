@@ -15,11 +15,6 @@ config.plugins.push(
   new webpack.optimize.OccurenceOrderPlugin(),
   new ExtractTextPlugin('[name]_bundle-[hash].css', {
     allChunks: true
-  }),
-  new webpack.DefinePlugin({
-    "process.env": {
-       NODE_ENV: JSON.stringify("production")
-     }
   })
 );
 
