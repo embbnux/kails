@@ -12,7 +12,7 @@ body {
 }
 
 ::selection {
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: #42b983;
 }
 
@@ -62,13 +62,13 @@ a:hover {
 }
 
 .navbar .navbar-nav.navbar-menu li,
-.navbar .navbar-nav.navbar-right li{
+.navbar .navbar-nav.navbar-right li {
   display: inline-block;
 }
 
-.navbar .container{
+.navbar .container {
   min-height: 160px;
-  padding: 20px 20px;
+  padding: 20px;
 }
 
 .navbar .navbar-nav li {
@@ -182,8 +182,6 @@ a:hover {
 .form-signin .form-control {
   position: relative;
   height: auto;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
   box-sizing: border-box;
   padding: 10px;
   font-size: 16px;
@@ -206,7 +204,7 @@ a:hover {
     width: 710px;
   }
 
-  .navbar .container{
+  .navbar .container {
     min-height: 110px;
   }
 
@@ -225,4 +223,3 @@ a:hover {
     text-align: left;
   }
 }
-
