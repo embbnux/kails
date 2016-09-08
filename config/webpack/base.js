@@ -74,7 +74,7 @@ module.exports = {
     return [
       postcssImport({addDependencyTo: webpack}),
       stylelint({
-        config: require('../../stylelint.config.js'),
+        config: require('../stylelint.config.js'),
         failOnError: true
       }),
       // do not autoprefixer the css because of style lint in development env,
