@@ -8,7 +8,7 @@
 }
 
 .article:last-child {
-    border-bottom: 0px;
+  border-bottom: 0;
 }
 
 .article .article-title {

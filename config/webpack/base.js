@@ -1,9 +1,13 @@
-var webpack = require('webpack');
-var path = require('path');
-var publicPath = path.resolve(__dirname, '../', '../', 'public', 'assets');
-var ManifestPlugin = require('webpack-manifest-plugin');
-var assetHost = require('../config').assetHost;
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack');
+const path = require('path');
+const publicPath = path.resolve(__dirname, '../', '../', 'public', 'assets');
+const ManifestPlugin = require('webpack-manifest-plugin');
+const assetHost = require('../config').assetHost;
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const stylelint = require('stylelint');
+const postcssImport = require('postcss-import');
+const cssnext = require('postcss-cssnext');
+const postcssReporter = require("postcss-reporter");
 
 module.exports = {
   context: path.resolve(__dirname, '../', '../'),
@@ -35,7 +39,13 @@ module.exports = {
     },
     {
       test: /\.css$/,
+      exclude: /assets/,
       loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+    },
+    {
+      test: /\.css$/,
+      exclude: /node_modules/,
+      loader: ExtractTextPlugin.extract("style", "css!postcss")
     },
     {
       test: /\.scss$/,
@@ -59,5 +69,19 @@ module.exports = {
     new ManifestPlugin({
       fileName: 'kails_manifest.json'
     })
-  ]
+  ],
+  postcss: function(webpack) {
+    return [
+      postcssImport({addDependencyTo: webpack}),
+      stylelint({
+        config: require('../../stylelint.config.js'),
+        failOnError: true
+      }),
+      // do not autoprefixer the css because of style lint in development env,
+      // whereas it will be called in production env, see production.config.js
+
+      // cssnext({autoprefixer: {browsers: "ie >= 9, ..."}}),
+      postcssReporter({clearMessages: true})
+    ]
+  }
 };

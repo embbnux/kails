@@ -1,11 +1,7 @@
-button{
-  -webkit-transition: all 0.45s;
-  -moz-transition: all 0.45s;
-  -ms-transition: all 0.45s;
-  -o-transition: all 0.45s;
+button {
   transition: all 0.45s;
 }
 
-*{
-  outline: none!important;
+* {
+  outline: none !important;
 }
