@@ -15,7 +15,7 @@ async function index(ctx, next) {
       model: models.User,
       attributes: ['id', 'name']
     }],
-    attributes: ['id', 'title', 'description', 'createdAt', 'created_at'],
+    attributes: ['id', 'title', 'description', 'created_at'],
     order: 'created_at DESC',
     offset: pageOffset,
     limit: 10

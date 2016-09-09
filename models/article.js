@@ -28,14 +28,6 @@ function ArticleModel(sequelize, DataTypes) {
       validate: {
         notEmpty: true
       }
-    },
-    createdAt: {
-      type: DataTypes.DATE,
-      field: 'created_at'
-    },
-    updatedAt: {
-      type: DataTypes.DATE,
-      field: 'updated_at'
     }
   },{
     underscored: true,
@@ -45,6 +37,11 @@ function ArticleModel(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         Article.belongsTo(models.User, { foreignKey: 'user_id' })
+      }
+    },
+    getterMethods : {
+      createdAt: function() {
+        return this.created_at
       }
     }
   })

@@ -1,5 +1,5 @@
 import React, { Component }  from 'react'
-import TimeAgo from 'react-timeago'
+import TimeAgo from './timeago'
 
 class Article extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class Article extends Component {
         </h2>
         <div className="article-info">
           Posted at: &nbsp;
-          <TimeAgo date={ article.createdAt } />
+          <TimeAgo time={ article.createdAt } />
           , &nbsp;
           { article.User && article.User.name }
         </div>
