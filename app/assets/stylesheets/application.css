@@ -47,10 +47,10 @@ a:after {
   background-color: #42b983;
   visibility: hidden;
   transform: scaleX(0);
-  transition: .3s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
-a:hover:after{
+a:hover:after {
   visibility: visible;
   transform: scaleX(1);
 }

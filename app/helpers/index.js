@@ -1,12 +1,12 @@
-import config from '../config/config.js'
+import config from '../../config/config.js'
 import fs from 'fs'
 import path from 'path'
 import moment from 'moment'
 
 let manifest = {}
-let manifestPath = path.resolve(__dirname, '../', 'public', 'assets', 'kails_manifest.json')
+let manifestPath = path.resolve(__dirname, '../', '../', 'public', 'assets', 'kails_manifest.json')
 if (fs.existsSync(manifestPath)) {
-  manifest = require('../public/assets/kails_manifest.json')
+  manifest = require('../../public/assets/kails_manifest.json')
 }
 
 exports.assetUrl = function (asset) {

@@ -1,8 +1,8 @@
 import fs from 'fs'
 import path from 'path'
 import Sequelize from 'sequelize'
-import { env } from '../config/config.js'
-import database from '../config/database.js'
+import { env } from '../../config/config.js'
+import database from '../../config/database.js'
 
 const config = database[env]
 const basename = path.basename(module.filename)

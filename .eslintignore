@@ -5,3 +5,4 @@ config
 *-compiled.js
 */*-compiled.js
 */*/*-compiled.js
+*/*/*/*-compiled.js

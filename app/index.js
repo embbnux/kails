@@ -8,7 +8,7 @@ import bodyParser from 'koa-bodyparser'
 import methodOverride from 'koa-methodoverride'
 import logger from 'koa-logger'
 
-import config from './config/config'
+import config from '../config/config'
 import helpers from './helpers/index'
 import router from './routes/index'
 import koaRedis from 'koa-redis'
@@ -42,11 +42,11 @@ app.use(convert(logger()))
 
 // not serve static when deploy
 if(config.serveStatic){
-  app.use(convert(require('koa-static')(__dirname + '/public')))
+  app.use(convert(require('koa-static')(__dirname + '/../public')))
 }
 
 //views with pug
-app.use(views('./views', { extension: 'pug' }))
+app.use(views(__dirname + '/views', { extension: 'pug' }))
 
 // catch error
 app.use(async (ctx, next) => {
