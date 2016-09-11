@@ -9,7 +9,7 @@ html
     title
       = title || 'Home'
       = ' | Kails'
-    link(rel='stylesheet' href=assetUrl('application.css'))
+    link(rel='stylesheet' href=helpers.assetUrl('application.css'))
     block dynamicCss
     link(href="/favicon.png" rel="shortcut icon" type="image/png")
     meta(name="csrf-param" content="_csrf")
@@ -23,13 +23,15 @@ html
         .navbar-container
           ul.nav.navbar-nav.navbar-menu
             li
-              a.nav-item(class=isActive('index', nav) href="/") Home
+              a.nav-item(class=helpers.isActive('index', nav) href="/") Home
             li
-              a.nav-item(class=isActive('about', nav) href="/about") About
+              a.nav-item(class=helpers.isActive('news', nav) href="/news") News
+            li
+              a.nav-item(class=helpers.isActive('about', nav) href="/about") About
           ul.nav.navbar-nav.navbar-right
             - if(!isUserSignIn)
               li
-                a.nav-item(class=isActive('signIn', nav) href="/users/sign_in") SignIn
+                a.nav-item(class=helpers.isActive('signIn', nav) href="/users/sign_in") SignIn
             - else
               li(class="dropdown")
                 a.nav-item.dropdown-toggle(href="#" data-toggle="dropdown")
@@ -48,5 +50,5 @@ html
       p
         | Power By Kail, &nbsp;
         a(href="https://kails.org") &copy; Kails
-    script(src=assetUrl('application.js'))
+    script(src=helpers.assetUrl('application.js'))
     block dynamicJs

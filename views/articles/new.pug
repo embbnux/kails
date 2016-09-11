@@ -14,6 +14,6 @@ block content
           textarea(name="content" placeholder="Article Content" class="form-control" id="article-editor")
         button(class="btn btn-info btn-block" type="submit") Save
 block dynamicJs
-  script(src=assetUrl('editor.js'))
+  script(src=helpers.assetUrl('editor.js'))
 block dynamicCss
-  link(rel='stylesheet' href=assetUrl('editor.css'))
+  link(rel='stylesheet' href=helpers.assetUrl('editor.css'))

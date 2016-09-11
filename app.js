@@ -29,7 +29,7 @@ app.use(convert(session({
 })))
 
 app.use(bodyParser())
-app.use(methodOverride((req, res) => {
+app.use(methodOverride((req, _res) => {
   if (req.body && (typeof req.body === 'object') && ('_method' in req.body)) {
     // look in urlencoded POST bodies and delete it
     const method = req.body._method
@@ -59,8 +59,7 @@ app.use(async (ctx, next) => {
     ctx.status = status
     ctx.state = {
       status: status,
-      assetUrl: helpers.assetUrl,
-      isActive: helpers.isActive,
+      helpers: helpers,
       currentUser: null
     }
     await ctx.render('error/error', {})
@@ -82,10 +81,7 @@ app.use(async (ctx, next) => {
   }
   ctx.state = {
     csrf: ctx.csrf,
-    assetUrl: helpers.assetUrl,
-    isActive: helpers.isActive,
-    timeAgo: helpers.timeAgo,
-    formatDate: helpers.formatDate,
+    helpers: helpers,
     currentUser: currentUser,
     isUserSignIn: (currentUser != null)
   }

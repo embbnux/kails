@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue", "Microsoft YaHei", SimHei, Helvetica, Arial, sans-serif !important;
+  font-family: "Helvetica Neue", "Microsoft YaHei", Helvetica, Arial, sans-serif !important;
   font-size: 15px;
   color: #34495e;
   line-height: 1.6;
@@ -32,12 +32,36 @@ h1 {
 }
 
 a, a:active, a:hover {
+  position: relative;
   color: #2c3e50;
   text-decoration: none;
 }
 
-a:hover {
-  border-bottom: 2px solid #42b983;
+a:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #42b983;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: .3s ease-in-out;
+}
+
+a:hover:after{
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+ul li {
+  list-style-type: none;
 }
 
 .navbar .navbar-header {
@@ -83,16 +107,24 @@ a:hover {
   line-height: 1.4;
 }
 
-.navbar a.nav-item.active {
-  border-bottom: 2px solid #42b983;
+.navbar a.nav-item.active:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #42b983;
+  visibility: visible;
+  transform: scaleX(1);
 }
 
 .navbar a.nav-item:hover {
-  border-bottom: 2px solid #42b983;
   background: transparent;
 }
 
 .navbar .dropdown a.nav-item:hover {
+  background: transparent;
   border-bottom: none;
 }
 

@@ -29,6 +29,7 @@ async function index(ctx, next) {
     nav: 'index',
     prerenderHtml: prerenderHtml,
     preloadedState: { articles: articles },
+    baseUrl: '/',
     currentPage: page,
     pages: parseInt(articleCount / 10 + 1)
   }

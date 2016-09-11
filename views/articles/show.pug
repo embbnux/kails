@@ -8,7 +8,7 @@ block content
       .article-info
         span
           | Post at: &nbsp;
-          = timeAgo(article.createdAt)
+          = helpers.timeAgo(article.createdAt)
         span
           | Author: &nbsp;
           = author.name

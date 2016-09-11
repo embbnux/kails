@@ -8,7 +8,7 @@ const md = new MarkdownIt({
 })
 
 const xss = new Xss.FilterXSS({
-  onIgnoreTagAttr: function(tag, name, value, isWhiteAttr) {
+  onIgnoreTagAttr: function(tag, name, value, _isWhiteAttr) {
     if (tag === 'pre' && name === 'class') {
       return name + '="' + Xss.escapeAttrValue(value) + '"'
     }
@@ -16,5 +16,5 @@ const xss = new Xss.FilterXSS({
 })
 
 exports.markdown = function(text) {
-  return '<div class="markdown-text">' + xss.process(md.render(text || '')) + '</div>';
+  return '<div class="markdown-text">' + xss.process(md.render(text || '')) + '</div>'
 }

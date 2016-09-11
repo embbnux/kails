@@ -1,0 +1,27 @@
+extends ../layout/layout.pug
+
+block content
+  .news
+    ul
+      each item in newsList
+        li
+          .title
+            a(href=item.url target="_blank" rel="nofollow")
+              = item.title
+          .info
+            - var news_url = `https://news.ycombinator.com/item?id=${item.id}`
+            span
+              | by&nbsp;
+              = item.by
+            span
+              a(href=news_url target="_blank" rel="nofollow")
+                = helpers.timeAgo(item.time * 1000)
+            span
+              | |&nbsp;&nbsp;
+              a(href=news_url target="_blank" rel="nofollow")
+                = item.descendants
+                |   comments
+          .score
+            = item.score
+            i.fa.fa-star
+  include ../shared/pagination.pug

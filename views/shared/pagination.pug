@@ -4,7 +4,7 @@ ul.pagination
       a «
   else
     li
-      a(href='/?page=1') «
+      a(href=`${baseUrl}?page=1`) «
   - var pageStart = currentPage - 2 > 0 ? currentPage - 2 : 1
   - var pageEnd = pageStart + 4 >= pages ? pages : pageStart + 4
   if (pageStart > 1)
@@ -17,7 +17,7 @@ ul.pagination
           = page
     else
       li
-        a(href=`/?page=${page}` )
+        a(href=`${baseUrl}?page=${page}` )
           = page
   - if (pageEnd < pages)
     li
@@ -27,4 +27,4 @@ ul.pagination
       a »
   - else
     li
-      a(href=`/?page=${pages}`) »
+      a(href=`${baseUrl}?page=${pages}`) »
