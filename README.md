@@ -54,9 +54,9 @@ This project is like Ruby on Rails Project:
 ```
 ├── app
 │   ├── assets
-│	│   ├── images
-│	│   ├── javascripts
-│	│   └── stylesheets
+│   │   ├── images
+│   │   ├── javascripts
+│   │   └── stylesheets
 │   ├── controllers
 │   ├── helpers
 │   ├── models
@@ -67,9 +67,9 @@ This project is like Ruby on Rails Project:
 ├── config
 │   ├── config.js
 │   └── webpack
-│	    ├── base.js
-│	    ├── development.js
-│	    └── production.js
+│       ├── base.js
+│       ├── development.js
+│       └── production.js
 ├── db
 │   └── migrations
 ├── index.js
@@ -102,16 +102,15 @@ npm run pm2
 
 ```
 $ npm run console
-> models.User.create({ name: 'test', email: 'kails@kails.org', password: '12345678', passwordConfirmation: '12345678' }).then(function(user) { console.log(user) })
-> models.User.findOne({ where: { email: 'kails@kails.org' } }).then(function(user) { console.log(user) })
+models.User.create({ name: 'test', email: 'kails@kails.org', password: '12345678', passwordConfirmation: '12345678' }).then(function(user) { console.log(user) })
+models.User.findOne({ where: { email: 'kails@kails.org' } }).then(function(user) { console.log(user) })
 ```
 
 ## Start development environtment
 
 ```
 $ npm run start
-# Visit `http://localhost:3000/`
-
+# Visit `http://localhost:3000/
 ```
 
 ## Author
