@@ -1,3 +1,12 @@
+.news ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.news ul li {
+  list-style-type: none;
+}
+
 .news {
   margin: 0.5em 0 0;
   border-radius: 2px;
