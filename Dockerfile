@@ -11,4 +11,4 @@ RUN npm run assets_compile
 
 EXPOSE 5000
 
-CMD ["npm", "run", "pm2"]
+CMD ["npm", "run", "pm2:docker"]
