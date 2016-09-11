@@ -52,25 +52,30 @@ This project is like Ruby on Rails Project:
 ## Structure
 
 ```
-├── app.js
-├── assets
-│   ├── images
-│   ├── javascripts
-│   └── stylesheets
+├── app
+│   ├── assets
+│	│   ├── images
+│	│   ├── javascripts
+│	│   └── stylesheets
+│   ├── controllers
+│   ├── helpers
+│   ├── models
+│   ├── routes
+│   ├── services
+│   ├── views
+│   └── index.js
 ├── config
 │   ├── config.js
-│   └── webpack.config.js
-├── controllers
+│   └── webpack
+│	    ├── base.js
+│	    ├── development.js
+│	    └── production.js
 ├── db
 │   └── migrations
-├── helpers
 ├── index.js
-├── models
 ├── package.json
 ├── public
-├── routes
-├── test
-└── views
+└── test
 ```
 
 ## Usage
