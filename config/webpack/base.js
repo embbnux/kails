@@ -12,9 +12,9 @@ const postcssReporter = require("postcss-reporter");
 module.exports = {
   context: path.resolve(__dirname, '../', '../'),
   entry: {
-    application: './assets/javascripts/application.js',
-    articles: './assets/javascripts/articles.js',
-    editor: './assets/javascripts/editor.js'
+    application: './app/assets/javascripts/application.js',
+    articles: './app/assets/javascripts/articles.js',
+    editor: './app/assets/javascripts/editor.js'
   },
   module: {
     loaders: [{

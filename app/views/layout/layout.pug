@@ -1,0 +1,54 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(name="description" content=(description || "Kails Blog"))
+    meta(name="author" content=(author || "Embbnux"))
+    title
+      = title || 'Home'
+      = ' | Kails'
+    link(rel='stylesheet' href=helpers.assetUrl('application.css'))
+    block dynamicCss
+    link(href="/favicon.png" rel="shortcut icon" type="image/png")
+    meta(name="csrf-param" content="_csrf")
+    meta(name="csrf-token" content=csrf)
+  body
+    .navbar
+      .container
+        .navbar-header
+          a.nav-logo(href="/") K
+          a.nav-name(href="/") Kails
+        .navbar-container
+          ul.nav.navbar-nav.navbar-menu
+            li
+              a.nav-item(class=helpers.isActive('index', nav) href="/") Home
+            li
+              a.nav-item(class=helpers.isActive('news', nav) href="/news") News
+            li
+              a.nav-item(class=helpers.isActive('about', nav) href="/about") About
+          ul.nav.navbar-nav.navbar-right
+            - if(!isUserSignIn)
+              li
+                a.nav-item(class=helpers.isActive('signIn', nav) href="/users/sign_in") SignIn
+            - else
+              li(class="dropdown")
+                a.nav-item.dropdown-toggle(href="#" data-toggle="dropdown")
+                  = currentUser.name
+                  b(class="caret")
+                ul(class="dropdown-menu user-menu")
+                  li
+                    a(href="/articles/new") New Article
+                  li
+                    a(href="/users/logout") Logout
+            //- li
+            //-   a.nav-item(class=isActive('signUp', nav) href="/users/sign_up") SignUp
+    .container
+      block content
+    footer.footer
+      p
+        | Power By Kail, &nbsp;
+        a(href="https://kails.org") &copy; Kails
+    script(src=helpers.assetUrl('application.js'))
+    block dynamicJs

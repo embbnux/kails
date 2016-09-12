@@ -1,0 +1,51 @@
+.articles {
+  margin-top: 1em;
+}
+
+.articles .article {
+  padding: 1em 0.65em 2em;
+  border-bottom: 1px solid #ddd;
+}
+
+.article:last-child {
+  border-bottom: 0;
+}
+
+.article .article-title {
+  margin: 0.65em 0;
+  color: #2c3e50;
+  font-size: 1.5em;
+  line-height: 1.6em;
+}
+
+.article .article-description {
+  margin: 0.65em 0;
+}
+
+.article .article-content h2 {
+  margin: 1em 0;
+}
+
+.article .article-info {
+  color: #7f8c8d;
+  margin: 1.2em 0;
+}
+
+.article .article-info span {
+  margin-right: 0.4em;
+}
+
+.article .read-more {
+  color: #42b983;
+  border: none;
+  cursor: pointer;
+}
+
+#article .article .article-description p {
+  padding: 9.5px;
+  background: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  word-break: break-all;
+  word-wrap: break-word;
+}

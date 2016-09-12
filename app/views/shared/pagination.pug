@@ -1,0 +1,30 @@
+ul.pagination
+  if (currentPage == 1)
+    li(class='disabled')
+      a «
+  else
+    li
+      a(href=`${baseUrl}?page=1`) «
+  - var pageStart = currentPage - 2 > 0 ? currentPage - 2 : 1
+  - var pageEnd = pageStart + 4 >= pages ? pages : pageStart + 4
+  if (pageStart > 1)
+    li
+      a ...
+  - for (var page = pageStart; page <= pageEnd; page++)
+    if (page === currentPage)
+      li(class="disabled")
+        a
+          = page
+    else
+      li
+        a(href=`${baseUrl}?page=${page}` )
+          = page
+  - if (pageEnd < pages)
+    li
+      a ...
+  - if(currentPage == pages)
+    li(class='disabled')
+      a »
+  - else
+    li
+      a(href=`${baseUrl}?page=${pages}`) »

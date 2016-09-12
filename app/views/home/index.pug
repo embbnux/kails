@@ -1,0 +1,10 @@
+extends ../layout/layout.pug
+
+block content
+  #articles
+    != prerenderHtml
+  include ../shared/pagination.pug
+block dynamicJs
+  script.
+    window.__PRELOADED_STATE__ = !{ JSON.stringify(preloadedState) }
+  script(src=helpers.assetUrl('articles.js'))

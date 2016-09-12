@@ -1,0 +1,22 @@
+extends ../layout/layout.pug
+
+block content
+  #article
+    article.article
+      h1.article-title
+        = article.title
+      .article-info
+        span
+          | Post at: &nbsp;
+          = helpers.timeAgo(article.createdAt)
+        span
+          | Author: &nbsp;
+          = author.name
+        - if(canEdit)
+          span
+            a(href=`/articles/${article.id}/edit`) Edit
+      .article-description
+        p
+          = article.description
+      .article-content
+        != articleHtml

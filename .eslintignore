@@ -2,3 +2,7 @@ bin
 public
 node_modules
 config
+*-compiled.js
+*/*-compiled.js
+*/*/*-compiled.js
+*/*/*/*-compiled.js

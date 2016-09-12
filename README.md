@@ -52,25 +52,30 @@ This project is like Ruby on Rails Project:
 ## Structure
 
 ```
-├── app.js
-├── assets
-│   ├── images
-│   ├── javascripts
-│   └── stylesheets
+├── app
+│   ├── assets
+│   │   ├── images
+│   │   ├── javascripts
+│   │   └── stylesheets
+│   ├── controllers
+│   ├── helpers
+│   ├── models
+│   ├── routes
+│   ├── services
+│   ├── views
+│   └── index.js
 ├── config
 │   ├── config.js
-│   └── webpack.config.js
-├── controllers
+│   └── webpack
+│       ├── base.js
+│       ├── development.js
+│       └── production.js
 ├── db
 │   └── migrations
-├── helpers
 ├── index.js
-├── models
 ├── package.json
 ├── public
-├── routes
-├── test
-└── views
+└── test
 ```
 
 ## Usage
@@ -97,16 +102,15 @@ npm run pm2
 
 ```
 $ npm run console
-> models.User.create({ name: 'test', email: 'kails@kails.org', password: '12345678', passwordConfirmation: '12345678' }).then(function(user) { console.log(user) })
-> models.User.findOne({ where: { email: 'kails@kails.org' } }).then(function(user) { console.log(user) })
+models.User.create({ name: 'test', email: 'kails@kails.org', password: '12345678', passwordConfirmation: '12345678' }).then(function(user) { console.log(user) })
+models.User.findOne({ where: { email: 'kails@kails.org' } }).then(function(user) { console.log(user) })
 ```
 
 ## Start development environtment
 
 ```
 $ npm run start
-# Visit `http://localhost:3000/`
-
+# Visit `http://localhost:3000/
 ```
 
 ## Author
