@@ -30,7 +30,7 @@ module.exports = {
     });
   },
 
-  down: function (queryInterface, Sequelize) {
+  down: function (queryInterface, _Sequelize) {
     return queryInterface.dropTable('articles');
   }
 };

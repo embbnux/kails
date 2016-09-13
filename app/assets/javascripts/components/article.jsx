@@ -1,5 +1,5 @@
-import React, { Component }  from 'react'
-import TimeAgo from './timeago'
+import React, { Component }  from 'react';
+import TimeAgo from './timeago';
 
 class Article extends Component {
   constructor(props) {
@@ -7,8 +7,8 @@ class Article extends Component {
   }
 
   render() {
-    let article = this.props.article
-    let articleLink = `/articles/${article.id}`
+    let article = this.props.article;
+    let articleLink = `/articles/${article.id}`;
     return (
       <article className="article">
         <h2 className="article-title">
@@ -29,12 +29,12 @@ class Article extends Component {
         </div>
         <a href={ articleLink } className="read-more">...more</a>
       </article>
-    )
+    );
   }
 }
 
 Article.propTypes = {
   article: React.PropTypes.object.isRequired
-}
+};
 
-export default Article
+export default Article;
