@@ -1,6 +1,6 @@
-import SimpleMDE from 'simplemde'
+import SimpleMDE from 'simplemde';
 
-require('simplemde/dist/simplemde.min.css')
+require('simplemde/dist/simplemde.min.css');
 
 const simplemde = new SimpleMDE({
   element: document.getElementById('article-editor'),
@@ -8,4 +8,4 @@ const simplemde = new SimpleMDE({
   autoDownloadFontAwesome: false,
   autofocus: true,
   indentWithTabs: false
-})
+});

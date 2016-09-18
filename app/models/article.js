@@ -36,16 +36,16 @@ function ArticleModel(sequelize, DataTypes) {
     tableName: 'articles',
     classMethods: {
       associate: function(models) {
-        Article.belongsTo(models.User, { foreignKey: 'user_id' })
+        Article.belongsTo(models.User, { foreignKey: 'user_id' });
       }
     },
     getterMethods : {
       createdAt: function() {
-        return this.created_at
+        return this.created_at;
       }
     }
-  })
-  return Article
+  });
+  return Article;
 }
 
-export default ArticleModel
+export default ArticleModel;

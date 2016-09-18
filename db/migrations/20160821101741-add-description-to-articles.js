@@ -6,10 +6,10 @@ module.exports = {
       'articles',
       'description',
       Sequelize.STRING
-    )
+    );
   },
 
-  down: function (queryInterface, Sequelize) {
-    return queryInterface.removeColumn('articles', 'description')
+  down: function (queryInterface, _Sequelize) {
+    return queryInterface.removeColumn('articles', 'description');
   }
 };

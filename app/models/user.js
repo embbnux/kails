@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcrypt';
 
 export default function(sequelize, DataTypes) {
   const User = sequelize.define('User', {
@@ -45,47 +45,47 @@ export default function(sequelize, DataTypes) {
     indexes: [{ unique: true, fields: ['email'] }],
     classMethods: {
       associate: function(models) {
-        User.hasMany(models.Article, { foreignKey: 'user_id' })
+        User.hasMany(models.Article, { foreignKey: 'user_id' });
       }
     },
     instanceMethods: {
       authenticate: function(value) {
         if (bcrypt.compareSync(value, this.passwordDigest)){
-          return this
+          return this;
         }
         else{
-          return false
+          return false;
         }
       }
     }
-  })
+  });
   function hasSecurePassword(user, options, callback) {
     if (user.password != user.passwordConfirmation) {
-      throw new Error('Password confirmation doesn\'t match Password')
+      throw new Error('Password confirmation doesn\'t match Password');
     }
     bcrypt.hash(user.get('password'), 10, function(err, hash) {
-      if (err) return callback(err)
-      user.set('passwordDigest', hash)
-      return callback(null, options)
-    })
+      if (err) return callback(err);
+      user.set('passwordDigest', hash);
+      return callback(null, options);
+    });
   }
   User.beforeCreate(function(user, options, callback) {
-    user.email = user.email.toLowerCase()
+    user.email = user.email.toLowerCase();
     if (user.password){
-      hasSecurePassword(user, options, callback)
+      hasSecurePassword(user, options, callback);
     }
     else{
-      return callback(null, options)
+      return callback(null, options);
     }
-  })
+  });
   User.beforeUpdate(function(user, options, callback) {
-    user.email = user.email.toLowerCase()
+    user.email = user.email.toLowerCase();
     if (user.password){
-      hasSecurePassword(user, options, callback)
+      hasSecurePassword(user, options, callback);
     }
     else{
-      return callback(null, options)
+      return callback(null, options);
     }
-  })
-  return User
+  });
+  return User;
 }
