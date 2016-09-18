@@ -22,7 +22,7 @@ async function signIn(ctx, _next) {
   await ctx.render('users/signIn', locals);
 }
 
-async function LogOut(ctx, _next) {
+function LogOut(ctx, _next) {
   if(!ctx.state.isUserSignIn){
     ctx.redirect('/');
     return;

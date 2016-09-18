@@ -17,6 +17,11 @@ module.exports = {
     editor: './app/assets/javascripts/editor.js'
   },
   module: {
+    preLoaders: [{
+      test: /\.js$/,
+      loader: "eslint-loader",
+      exclude: /node_modules/
+    }],
     loaders: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
@@ -64,6 +69,10 @@ module.exports = {
       fileName: 'kails_manifest.json'
     })
   ],
+  eslint: {
+    configFile: '.eslintrc.json',
+    failOnError: false
+  },
   postcss: function(webpack) {
     return [
       postcssImport({addDependencyTo: webpack}),
