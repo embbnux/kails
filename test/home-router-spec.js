@@ -10,7 +10,15 @@ describe('Home Routes', () => {
     it('should return 200', (done) => {
       request
         .get('/')
-        .expect(200, done)
-    })
-  })
-})
+        .expect(200, done);
+    });
+  });
+
+  describe('GET about', () => {
+    it('should return 200', (done) => {
+      request
+        .get('/about')
+        .expect(200, done);
+    });
+  });
+});
