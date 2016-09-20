@@ -12,6 +12,8 @@ This project is like Ruby on Rails Project:
 * Testing (mocha)
 * Lint (eslint)
 * middleware
+* console
+* server side render with react
 
 ##Requirements
 
@@ -45,8 +47,10 @@ This project is like Ruby on Rails Project:
 * [Babel](https://github.com/babel/babel)
 * [ES6]
 * [ESLint](http://eslint.org/)
+* [React](https://facebook.github.io/react/)
 
 ##Structure
+
 ```
 ├── app.js
 ├── assets
