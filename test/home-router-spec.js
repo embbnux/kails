@@ -13,4 +13,11 @@ describe('Home Routes', () => {
         .expect(200, done);
     });
   });
+  describe('GET about', () => {
+    it('should return 200', (done) => {
+      request
+        .get('/about')
+        .expect(200, done);
+    });
+  });
 });
