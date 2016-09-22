@@ -1,6 +1,6 @@
 import HackerNewsService from '../services/hacker_news';
 
-async function index(ctx, _next) {
+const index = async (ctx, _next) => {
   const page = parseInt(ctx.query.page) || 1;
   const hackerNews = new HackerNewsService();
   const newsIds = await hackerNews.getTopStories(page);
@@ -19,5 +19,5 @@ async function index(ctx, _next) {
 }
 
 export default {
-  index: index
+  index
 };
