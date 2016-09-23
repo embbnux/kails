@@ -16,7 +16,7 @@ const index = async (ctx, _next) => {
     pages: 20
   };
   await ctx.render('news/index', locals);
-}
+};
 
 export default {
   index

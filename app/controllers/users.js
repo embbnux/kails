@@ -2,7 +2,7 @@ import models from '../models/index';
 
 const index = (ctx, _next) => {
   ctx.body = 'this a users response!' + ctx.session.userId;
-}
+};
 
 function setLocals(message) {
   return {
@@ -20,7 +20,7 @@ const signIn = async (ctx, _next) => {
     nav: 'signIn'
   };
   await ctx.render('users/signIn', locals);
-}
+};
 
 const LogOut = (ctx, _next) => {
   if(!ctx.state.isUserSignIn){
@@ -29,7 +29,7 @@ const LogOut = (ctx, _next) => {
   }
   ctx.session.userId = null;
   ctx.redirect('/');
-}
+};
 
 const LogIn = async (ctx, _next) => {
   const body = ctx.request.body;
@@ -47,7 +47,7 @@ const LogIn = async (ctx, _next) => {
     const locals = setLocals('user name or password error.');
     await ctx.render('users/signIn', locals);
   }
-}
+};
 
 export default {
   index,

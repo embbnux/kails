@@ -34,7 +34,7 @@ const index = async (ctx, _next) => {
     pages: parseInt(articleCount / 10 + 1)
   };
   await ctx.render('home/index', locals);
-}
+};
 
 const about = async (ctx, _next) => {
   const readme = fs.readFileSync('README.md', 'utf8');
@@ -45,7 +45,7 @@ const about = async (ctx, _next) => {
     markdown: markdown
   };
   await ctx.render('home/about', locals);
-}
+};
 
 export default {
   index,

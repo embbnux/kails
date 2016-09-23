@@ -20,14 +20,14 @@ const show = async (ctx, _next) => {
     author: author
   };
   await ctx.render('articles/show', locals);
-}
+};
 
 const newArticle = async (ctx, _next) => {
   const locals = {
     nav: 'articleNew'
   };
   await ctx.render('articles/new', locals);
-}
+};
 
 const create = async (ctx, _next) => {
   const currentUser = ctx.state.currentUser;
@@ -35,7 +35,7 @@ const create = async (ctx, _next) => {
   // await models.Article.create(articleParams)
   ctx.redirect('/articles/' + article.id);
   return;
-}
+};
 
 const edit = async (ctx, _next) => {
   const locals = {
@@ -43,14 +43,14 @@ const edit = async (ctx, _next) => {
     nav: 'article'
   };
   await ctx.render('articles/edit', locals);
-}
+};
 
 const update = async (ctx, _next) => {
   let article = ctx.state.article;
   article = await article.update(ctx.state.articleParams);
   ctx.redirect('/articles/' + article.id);
   return;
-}
+};
 
 const checkLogin = async (ctx, next) => {
   if(!ctx.state.isUserSignIn){
@@ -59,7 +59,7 @@ const checkLogin = async (ctx, next) => {
     return;
   }
   await next();
-}
+};
 
 const checkArticleOwner = async (ctx, next) => {
   const currentUser = ctx.state.currentUser;
@@ -75,7 +75,7 @@ const checkArticleOwner = async (ctx, next) => {
   }
   ctx.state.article = article;
   await next();
-}
+};
 
 const checkParamsBody = async (ctx, next) => {
   const body = ctx.request.body;
@@ -97,7 +97,7 @@ const checkParamsBody = async (ctx, next) => {
     content: body.content
   };
   await next();
-}
+};
 
 export default {
   show,
