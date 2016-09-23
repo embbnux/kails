@@ -9,10 +9,10 @@ import methodOverride from 'koa-methodoverride';
 import logger from 'koa-logger';
 
 import config from '../config/config';
-import helpers from './helpers/index';
-import router from './routes/index';
+import router from './routes';
 import koaRedis from 'koa-redis';
-import models from './models/index';
+import models from './models';
+import middlewares from './middlewares';
 
 const redisStore = koaRedis({
   url: config.redisUrl
@@ -49,60 +49,15 @@ if(config.serveStatic){
 app.use(views(__dirname + '/views', { extension: 'pug' }));
 
 // catch error
-app.use(async (ctx, next) => {
-  try {
-    await next();
-    if (ctx.status === 404) ctx.throw(404);
-  } catch(err) {
-    let status = err.status || 500;
-    // let message = e.message || 'Server Error!'
-    ctx.status = status;
-    ctx.state = {
-      status: status,
-      helpers: helpers,
-      currentUser: null
-    };
-    await ctx.render('error/error', {});
-    if (status == 500) {
-      console.log(err);
-      logger.error('server error', err, ctx);
-    }
-  }
-});
+app.use(middlewares.catchError);
 
 // csrf
 app.use(convert(csrf()));
 
 // add helpers for views
-app.use(async (ctx, next) => {
-  let currentUser = null;
-  if(ctx.session.userId){
-    currentUser = await models.User.findById(ctx.session.userId);
-  }
-  ctx.state = {
-    csrf: ctx.csrf,
-    helpers: helpers,
-    currentUser: currentUser,
-    isUserSignIn: (currentUser != null)
-  };
-  await next();
-});
-
-// logger
-app.use(async (ctx, next) => {
-  const start = new Date();
-  await next();
-  const ms = new Date() - start;
-  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
-});
+app.use(middlewares.addHelper);
 
 app.use(router.routes(), router.allowedMethods());
-
-// response
-app.on('error', function(err, ctx){
-  console.log(err);
-  logger.error('server error', err, ctx);
-});
 
 if (process.argv[2] && process.argv[2][0] == 'c') {
   const repl = require('repl');
