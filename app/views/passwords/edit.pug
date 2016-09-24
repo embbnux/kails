@@ -1,0 +1,16 @@
+extends ../layout/layout.pug
+
+block content
+  .center-block
+    h1 Change Password
+  .row
+    form.form-signin(action="/passwords/" method="post")
+      input(type="hidden" name='_method' value='PUT')
+      input(type="hidden" name="_csrf" value=csrf)
+      label(for="oldPassword" class="sr-only") Password
+      input(type="password" name="oldPassword" id="oldPassword" class="form-control" placeholder="Old Password" required)
+      label(for="newPassword" class="sr-only") New Password
+      input(type="password" name="newPassword" id="newPassword" class="form-control" placeholder="New Password" required)
+      label(for="newPasswordConfirmation" class="sr-only") New Password Confirmation
+      input(type="password" name="newPasswordConfirmation" id="newPasswordConfirmation" class="form-control" placeholder="New Password Confirmation" required)
+      button(class="btn btn-lg btn-info btn-block" type="submit") Save
