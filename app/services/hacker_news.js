@@ -1,7 +1,8 @@
 import urllib from 'urllib';
 
 class HackerNewsService {
-  constructor() {
+  constructor(ctx) {
+    this.ctx = ctx;
     this.serverUrl = 'https://hacker-news.firebaseio.com/v0';
     this.pageSize = 20;
   }
@@ -15,6 +16,11 @@ class HackerNewsService {
   }
 
   async getTopStories(page) {
+    const cacheItemKey = 'news_ids_' + page;
+    let ids = await this.ctx.cache.get(cacheItemKey);
+    if(ids) {
+      return ids;
+    }
     const result = await this.request('topstories.json', {
       data: {
         orderBy: '"$key"',
@@ -22,13 +28,20 @@ class HackerNewsService {
         endAt: `"${this.pageSize * page - 1}"`
       }
     });
-    const ids = Object.keys(result).map(key => result[key]);
+    ids = Object.keys(result).map(key => result[key]);
+    await this.ctx.cache.set(cacheItemKey, ids);
     return ids;
   }
 
   async getItem(id) {
-    const result = await this.request(`item/${id}.json`);
-    return result;
+    const cacheItemKey = 'news_item_' + id;
+    let item = await this.ctx.cache.get(cacheItemKey);
+    if(item) {
+      return item;
+    }
+    item = await this.request(`item/${id}.json`);
+    await this.ctx.cache.set(cacheItemKey, item);
+    return item;
   }
 
   async getUser(id) {

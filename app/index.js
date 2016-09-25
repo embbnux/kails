@@ -13,6 +13,7 @@ import router from './routes';
 import koaRedis from 'koa-redis';
 import models from './models';
 import middlewares from './middlewares';
+import cacheMiddle from './middlewares/cache';
 
 const redisStore = koaRedis({
   url: config.redisUrl
@@ -27,6 +28,10 @@ app.use(convert(session({
   prefix: 'kails:sess:',
   key: 'kails.sid'
 })));
+
+app.use(cacheMiddle({
+  redis: { url: config.redisUrl }
+}));
 
 app.use(bodyParser());
 app.use(methodOverride((req, _res) => {
