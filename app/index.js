@@ -23,6 +23,11 @@ const app = new Koa();
 
 app.keys = [config.secretKeyBase];
 
+// not serve static when deploy
+if(config.serveStatic){
+  app.use(convert(require('koa-static')(__dirname + '/../public')));
+}
+
 app.use(convert(session({
   store: redisStore,
   prefix: 'kails:sess:',
@@ -44,11 +49,6 @@ app.use(methodOverride((req, _res) => {
 }));
 app.use(convert(json()));
 app.use(convert(logger()));
-
-// not serve static when deploy
-if(config.serveStatic){
-  app.use(convert(require('koa-static')(__dirname + '/../public')));
-}
 
 //views with pug
 app.use(views(__dirname + '/views', { extension: 'pug' }));

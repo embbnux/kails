@@ -29,6 +29,9 @@ module.exports = function (options) {
     if(!redisAvailable){
       return;
     }
+    if (value == null) {
+      return;
+    }
     options = options || {};
     key = prefix + key;
     const tty = options.expire || expire;
