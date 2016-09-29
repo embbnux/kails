@@ -113,6 +113,10 @@ $ npm run start
 # Visit `http://localhost:3000/
 ```
 
+## Deploy on production
+
+[How to Deploy Kails](https://github.com/embbnux/kails/wiki/How-to-Deploy-Kails)
+
 ## Author
 * [Embbnux Ji](https://www.embbnux.com)
 
@@ -120,4 +124,4 @@ $ npm run start
 * [What about Kails](https://www.embbnux.com/2016/09/04/kails_with_koa2_like_ruby_on_rails/)
 
 ## License
-MIT
+[MIT](https://github.com/embbnux/kails/blob/master/LICENSE.txt)

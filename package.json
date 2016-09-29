@@ -2,6 +2,7 @@
   "name": "kails",
   "version": "0.1.0",
   "private": true,
+  "license" : "MIT",
   "scripts": {
     "console": "node index.js console --harmony",
     "start": "./node_modules/.bin/nodemon index.js & node_modules/.bin/webpack --config config/webpack/development.js --progress --colors --watch",
