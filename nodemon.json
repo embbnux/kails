@@ -2,6 +2,6 @@
   "verbose": true,
   "ignore": ["app/assets", "public/assets/"],
   "execMap": {
-    "js": "node --harmony"
+    "js": "node"
   }
 }
