@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const postcssImport = require('postcss-import');
 const cssnext = require('postcss-cssnext');
-const postcssReporter = require("postcss-reporter");
+const postcssReporter = require('postcss-reporter');
 
 const config = _.merge({}, base);
 
@@ -21,17 +21,17 @@ config.plugins.push(
   }),
   new webpack.DefinePlugin({
     'process.env': {
-       NODE_ENV: JSON.stringify('production')
-     }
+      NODE_ENV: JSON.stringify('production')
+    }
   })
 );
 
 config.postcss = function(webpack) {
   return [
     postcssImport({addDependencyTo: webpack}),
-    cssnext({autoprefixer: {browsers: "ie >= 9, ..."}}),
+    cssnext({autoprefixer: {browsers: 'ie >= 9, ...'}}),
     postcssReporter({clearMessages: true})
-  ]
+  ];
 };
 
 module.exports = config;
