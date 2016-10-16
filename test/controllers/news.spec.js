@@ -1,15 +1,13 @@
-import app from '../app/index.js';
 import supertest from 'supertest';
-import { should } from 'chai';
+import app from '../../app/index.js';
 
-should();
 const request = supertest.agent(app.listen());
 
-describe('Users Routes', () => {
-  describe('GET /users/sign_in', () => {
+describe('News Controllers', () => {
+  describe('GET index /', () => {
     it('should return 200', (done) => {
       request
-        .get('/users/sign_in')
+        .get('/news', { timeout: 10000 })
         .expect(200, done);
     });
   });
