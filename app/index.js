@@ -34,9 +34,7 @@ app.use(convert(session({
   key: 'kails.sid'
 })));
 
-app.use(cacheMiddle({
-  redis: { url: config.redisUrl }
-}));
+app.use(cacheMiddle());
 
 app.use(bodyParser());
 app.use(methodOverride((req, _res) => {

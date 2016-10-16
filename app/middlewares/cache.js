@@ -1,19 +1,16 @@
 import wrapper from 'co-redis';
-import Redis from 'redis';
+import redis from '../../config/redis';
 
 module.exports = function (options) {
-  options = options || {};
-  const prefix = options.prefix || 'kails-cache:';
-  const expire = options.expire || 1800;
+  const middleOptions = options || {};
+  const prefix = middleOptions.prefix || 'kails-cache:';
+  const expire = middleOptions.expire || 1800;
 
   let redisAvailable = false;
-  let redisOptions = options.redis || {};
 
-  const redisClient = wrapper(
-    Redis.createClient(redisOptions.url, redisOptions.options)
-  );
+  const redisClient = wrapper(redis);
 
-  redisClient.on('error', (_error)=> {
+  redisClient.on('error', (_error) => {
     redisAvailable = false;
   });
 
@@ -25,23 +22,23 @@ module.exports = function (options) {
     redisAvailable = true;
   });
 
-  const setCache = async function(key, value, options) {
+  const setCache = async function(key, value, cacheOptions) {
     if(!redisAvailable){
       return;
     }
     if (value == null) {
       return;
     }
-    options = options || {};
+    const currentOptions = cacheOptions || {};
     key = prefix + key;
-    const tty = options.expire || expire;
+    const tty = currentOptions.expire || expire;
     value = JSON.stringify(value);
     await redisClient.setex(key, tty, value);
   };
 
   const getCache = async function(key) {
     if(!redisAvailable){
-      return;
+      return null;
     }
     key = prefix + key;
     let data = await redisClient.get(key);

@@ -1,4 +1,3 @@
-import logger from 'koa-logger';
 import helpers from '../helpers';
 import models from '../models';
 
@@ -17,7 +16,7 @@ async function catchError(ctx, next) {
     };
     await ctx.render('error/error', {});
     if (status == 500) {
-      logger.error('server error', err, ctx);
+      console.log('server error', err, ctx);
     }
   }
 }
