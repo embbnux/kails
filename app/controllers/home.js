@@ -9,8 +9,7 @@ const index = async (ctx, _next) => {
   let page = parseInt(ctx.query.page, 10) || 1;
   page = page > 0 ? page : 1;
   let pageOffset = ( page - 1 ) * 10;
-  const articleCount = await models.Article.count();
-  const articles = await models.Article.findAll({
+  const articles_query = {
     include: [{
       model: models.User,
       attributes: ['id', 'name']
@@ -19,11 +18,14 @@ const index = async (ctx, _next) => {
     order: 'created_at DESC',
     offset: pageOffset,
     limit: 10
-  });
+  };
+  const [articleCount, articles] = await Promise.all([
+    models.Article.count(),
+    models.Article.findAll(articles_query)
+  ]);
   const prerenderHtml = await renderToString(
     <Articles articles={ articles } />
   );
-  // ctx.session.userId = 4
   const locals = {
     title: 'Home',
     nav: 'index',
@@ -37,7 +39,7 @@ const index = async (ctx, _next) => {
 };
 
 const about = async (ctx, _next) => {
-  const readme = fs.readFileSync('README.md', 'utf8');
+  const readme = await fs.readFileSync('README.md', 'utf8');
   const locals = {
     title: 'About',
     nav: 'about',
