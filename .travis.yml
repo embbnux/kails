@@ -2,11 +2,7 @@ language: node_js
 node_js:
   - "6"
 env:
-  - NODE_ENV=test
-  - DATABASE_USERNAME_TEST=postgres
-  - DATABASE_PASSWORD_TEST=''
-  - DATABASE_NAME_TEST=kails_test
-  - DATABASE_HOST_TEST=localhost
+  - NODE_ENV=test DATABASE_USERNAME_TEST=postgres DATABASE_PASSWORD_TEST='' DATABASE_NAME_TEST=kails_test DATABASE_HOST_TEST=localhost
 services:
   - postgresql
   - redis-server
