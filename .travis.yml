@@ -1,8 +1,15 @@
 language: node_js
 node_js:
   - "6"
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - gcc-4.8
+    - g++-4.8
 env:
-  - NODE_ENV=test DATABASE_USERNAME_TEST=postgres DATABASE_PASSWORD_TEST='' DATABASE_NAME_TEST=kails_test DATABASE_HOST_TEST=localhost
+  - CXX=g++-4.8 NODE_ENV=test DATABASE_USERNAME_TEST=postgres DATABASE_PASSWORD_TEST='' DATABASE_NAME_TEST=kails_test DATABASE_HOST_TEST=localhost
 services:
   - postgresql
   - redis-server
