@@ -15,6 +15,10 @@ This project is like Ruby on Rails Project:
 * console
 * server side render with react
 
+## STATUS
+
+[![Build Status](https://travis-ci.org/embbnux/kails.svg?branch=master)](https://travis-ci.org/embbnux/kails)
+
 ## Requirements
 
 * node __^4.0.0__
