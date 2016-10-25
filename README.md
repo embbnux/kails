@@ -1,4 +1,7 @@
 # Kails
+
+[![Build Status](https://travis-ci.org/embbnux/kails.svg?branch=master)](https://travis-ci.org/embbnux/kails)
+
 A Web App like Ruby on Rails with Koa2, Webpack and Postgres.
 
 This project is like Ruby on Rails Project:
@@ -14,10 +17,6 @@ This project is like Ruby on Rails Project:
 * middleware
 * console
 * server side render with react
-
-## STATUS
-
-[![Build Status](https://travis-ci.org/embbnux/kails.svg?branch=master)](https://travis-ci.org/embbnux/kails)
 
 ## Requirements
 
