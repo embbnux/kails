@@ -16,6 +16,9 @@ module.exports = {
     articles: './app/assets/javascripts/articles.js',
     editor: './app/assets/javascripts/editor.js'
   },
+  node: {
+    fs: "empty"
+  },
   module: {
     preLoaders: [{
       test: /\.js$/,
