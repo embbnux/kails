@@ -88,13 +88,13 @@ npm install
 npm run db:migrate
 NODE_ENV=test npm run db:migrate
 # run for development, it start app and webpack dev server
-npm run start
+npm start
 # run the app
 npm run app
 # run the lint
 npm run lint
 # run test
-npm run test
+npm test
 # deploy
 npm run assets_compile
 NODE_ENV=production npm run db:migrate
