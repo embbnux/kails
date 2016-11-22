@@ -13,14 +13,14 @@ function ArticleModel(sequelize, DataTypes) {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        len: [1, 50]
+        len: [1, 100]
       }
     },
     description: {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        len: [1, 200]
+        len: [1, 400]
       }
     },
     content: {
