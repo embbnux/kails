@@ -20,7 +20,7 @@ function ArticleModel(sequelize, DataTypes) {
       type: DataTypes.STRING,
       validate: {
         notEmpty: true,
-        len: [1, 400]
+        len: [1, 500]
       }
     },
     content: {
