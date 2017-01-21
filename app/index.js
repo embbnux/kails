@@ -14,6 +14,7 @@ import koaRedis from 'koa-redis';
 import models from './models';
 import middlewares from './middlewares';
 import cacheMiddle from './middlewares/cache';
+import flashMessageMiddle from './middlewares/flashMessage';
 
 const redisStore = koaRedis({
   url: config.redisUrl
@@ -59,6 +60,7 @@ app.use(convert(csrf()));
 
 // add helpers for views
 app.use(middlewares.addHelper);
+app.use(flashMessageMiddle);
 
 app.use(router.routes(), router.allowedMethods());
 

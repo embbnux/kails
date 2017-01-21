@@ -54,6 +54,9 @@ a:hover:after {
   visibility: visible;
   transform: scaleX(1);
 }
+.navbar {
+  margin-bottom: 0;
+}
 
 .navbar .navbar-header {
   float: none;

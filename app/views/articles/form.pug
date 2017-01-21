@@ -1,0 +1,15 @@
+form(action=articleFormPath method="post")
+  #article
+    article.article
+      .article-title
+        input(type="hidden" name="_csrf" value=csrf)
+        - if (article.id)
+          input(type="hidden" name="_method" value='put')
+        input(type="text" name="title" class="form-control" placeholder="Article Title" value=article.title required autofocus)
+      .article-description
+        textarea(class="textarea form-control" name="description" placeholder="Article Description" required autofocus)
+          = article.description
+      .article-content
+        textarea(name="content" placeholder="Article Content" class="form-control" id="article-editor")
+          = article.content
+      button(class="btn btn-info btn-block" type="submit") Save
