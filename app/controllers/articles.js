@@ -24,32 +24,56 @@ const show = async (ctx, _next) => {
 
 const newArticle = async (ctx, _next) => {
   const locals = {
-    nav: 'articleNew'
+    nav: 'articleNew',
+    article: {},
+    articleFormPath: '/articles',
   };
   await ctx.render('articles/new', locals);
 };
 
 const create = async (ctx, _next) => {
   const currentUser = ctx.state.currentUser;
-  const article = await currentUser.createArticle(ctx.state.articleParams);
-  // await models.Article.create(articleParams)
-  ctx.redirect('/articles/' + article.id);
-  return;
+  try {
+    const article = await currentUser.createArticle(ctx.state.articleParams);
+    ctx.flashMessage.notice = 'Create Article Successfully!';
+    ctx.redirect('/articles/' + article.id);
+  } catch (error) {
+    const locals = {
+      nav: 'articleNew',
+      article: ctx.state.articleParams,
+      articleFormPath: '/articles',
+    };
+    ctx.flashMessage.warning = error.message;
+    await ctx.render('articles/new', locals);
+  }
 };
 
 const edit = async (ctx, _next) => {
   const locals = {
-    title: '编辑',
-    nav: 'article'
+    title: 'Edit',
+    nav: 'article',
+    articleFormPath: `/articles/${ctx.state.article.id}`,
   };
   await ctx.render('articles/edit', locals);
 };
 
 const update = async (ctx, _next) => {
   let article = ctx.state.article;
-  article = await article.update(ctx.state.articleParams);
-  ctx.redirect('/articles/' + article.id);
-  return;
+  try {
+    article = await article.update(ctx.state.articleParams);
+    ctx.flashMessage.notice = 'Update Article Successfully!';
+    ctx.redirect('/articles/' + article.id);
+  } catch (error) {
+    article = { ...ctx.state.articleParams, id: article.id };
+    const locals = {
+      title: 'Edit',
+      nav: 'article',
+      articleFormPath: `/articles/${article.id}`,
+      article
+    };
+    ctx.flashMessage.warning = error.message;
+    await ctx.render('articles/edit', locals);
+  }
 };
 
 const checkLogin = async (ctx, next) => {

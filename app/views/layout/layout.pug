@@ -45,6 +45,13 @@ html
             //- li
             //-   a.nav-item(class=isActive('signUp', nav) href="/users/sign_up") SignUp
     .container
+      - var messages = flashMessage && flashMessage.messages
+      - if (messages)
+        - var messageKeys = Object.keys(messages)
+        each messageKey in messageKeys
+          .alert(class=`alert-${messageKey}`)
+            a(class="close" data-dismiss='alert' href="#") x
+            = messages[messageKey]
       block content
     footer.footer
       p

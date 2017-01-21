@@ -12,8 +12,10 @@ async function update(ctx, _next) {
     currentUser.password = body.newPassword;
     currentUser.passwordConfirmation = body.newPasswordConfirmation;
     await currentUser.save();
+    ctx.flashMessage.notice = 'Edit Password Successfully!';
     ctx.redirect('/');
   } else {
+    ctx.flashMessage.warning = 'Edit Password Failed!';
     ctx.redirect('/passwords/edit');
   }
   return;
