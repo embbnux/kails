@@ -14,7 +14,7 @@ This project is like Ruby on Rails Project:
 * Password with bcrypt
 * Testing (mocha)
 * Lint (eslint)
-* middleware
+* middlewares
 * console
 * server side render with react
 * flash message
@@ -59,31 +59,30 @@ This project is like Ruby on Rails Project:
 └── test
 ```
 
-## Go to App console
-
-```
-$ npm run console
-models.User.create({ name: 'test', email: 'kails@kails.org', password: '12345678', passwordConfirmation: '12345678' }).then(function(user) { console.log(user) })
-models.User.findOne({ where: { email: 'kails@kails.org' } }).then(function(user) { console.log(user) })
-```
-
 ## Build development environment on localhost
 
- 1. install nodejs
- 2. install redis and postgres
- 3. create postgres database:
-   for development { database: 'kails_dev', owner: 'kails_dev', password: 'kails_dev' }
-   for test { database: 'kails_test', owner: 'kails_tester', password: 'kails_tester' }
- 4. clone and start this project
+1. install nodejs
+2. install redis and postgres
+3. create postgres database:
+ for development { database: 'kails_dev', owner: 'kails_dev', password: 'kails_dev' }
+ for test { database: 'kails_test', owner: 'kails_tester', password: 'kails_tester' }
+4. clone and start this project
 
-```bash
-git clone https://github.com/embbnux/kails.git
-npm install
-npm run db:migrate
-npm run start
-```
+  ```bash
+  git clone https://github.com/embbnux/kails.git
+  npm install
+  npm run db:migrate
+  npm run start
+  ```
 
- 5. Visit http://localhost:3000/
+5. Visit http://localhost:3000/
+6. console
+
+  ```
+  $ npm run console
+  > models.User.create({ name: 'test', email: 'kails@kails.org', password: '12345678', passwordConfirmation: '12345678' }).then(function(user) { console.log(user) })
+  > models.User.findOne({ where: { email: 'kails@kails.org' } }).then(function(user) { console.log(user) })
+  ```
 
 ## Deploy on production
 
@@ -94,9 +93,10 @@ npm run start
 ## Commands with npm
 
 ```
+# migrate database
 npm run db:migrate
 NODE_ENV=test npm run db:migrate
-# run for development, it start app and webpack dev server
+# run for development. it start app and webpack dev server
 npm start
 # run the app
 npm run app
@@ -108,6 +108,8 @@ npm test
 npm run assets_compile
 NODE_ENV=production npm run db:migrate
 npm run pm2
+# console
+npm run console
 ```
 
 ## Author
