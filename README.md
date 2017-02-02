@@ -74,18 +74,21 @@ models.User.findOne({ where: { email: 'kails@kails.org' } }).then(function(user)
  3. create postgres database:
    for development { database: 'kails_dev', owner: 'kails_dev', password: 'kails_dev' }
    for test { database: 'kails_test', owner: 'kails_tester', password: 'kails_tester' }
- 4. clone this project
+ 4. clone and start this project
 
 ```bash
+git clone https://github.com/embbnux/kails.git
 npm install
 npm run db:migrate
 npm run start
-# Visit `http://localhost:3000/
 ```
+
+ 5. Visit http://localhost:3000/
 
 ## Deploy on production
 
 [How to Deploy Kails](https://github.com/embbnux/kails/wiki/How-to-Deploy-Kails)
+
 [How to Deploy Kails With Docker](https://github.com/embbnux/kails/wiki/How-to-Deploy-Kails-with-docker)
 
 ## Commands with npm
