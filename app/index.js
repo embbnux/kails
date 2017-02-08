@@ -7,6 +7,7 @@ import json from 'koa-json';
 import bodyParser from 'koa-bodyparser';
 import methodOverride from 'koa-methodoverride';
 import logger from 'koa-logger';
+import flashMessage from 'koa-flash-message';
 
 import config from '../config/config';
 import router from './routes';
@@ -14,7 +15,7 @@ import koaRedis from 'koa-redis';
 import models from './models';
 import middlewares from './middlewares';
 import cacheMiddle from './middlewares/cache';
-import flashMessageMiddle from './middlewares/flashMessage';
+
 
 const redisStore = koaRedis({
   url: config.redisUrl
@@ -67,7 +68,7 @@ app.use(new CSRF({
 
 // add helpers for views
 app.use(middlewares.addHelper);
-app.use(flashMessageMiddle);
+app.use(flashMessage);
 
 app.use(router.routes(), router.allowedMethods());
 
