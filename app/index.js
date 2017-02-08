@@ -1,6 +1,6 @@
 import Koa from 'koa';
 import session from 'koa-generic-session';
-import csrf from 'koa-csrf';
+import CSRF from 'koa-csrf';
 import views from 'koa-views';
 import convert from 'koa-convert';
 import json from 'koa-json';
@@ -56,7 +56,14 @@ app.use(views(__dirname + '/views', { extension: 'pug' }));
 app.use(middlewares.catchError);
 
 // csrf
-app.use(convert(csrf()));
+app.use(new CSRF({
+  invalidSessionSecretMessage: 'Invalid session secret',
+  invalidSessionSecretStatusCode: 403,
+  invalidTokenMessage: 'Invalid CSRF token',
+  invalidTokenStatusCode: 403,
+  excludedMethods: [ 'GET', 'HEAD', 'OPTIONS' ],
+  disableQuery: false
+}));
 
 // add helpers for views
 app.use(middlewares.addHelper);
