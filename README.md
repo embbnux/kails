@@ -105,6 +105,7 @@ npm run lint
 # run test
 npm test
 # deploy
+npm run build
 npm run assets_compile
 NODE_ENV=production npm run db:migrate
 npm run pm2

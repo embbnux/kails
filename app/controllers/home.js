@@ -1,7 +1,7 @@
 import models from '../models/index';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import Articles from '../assets/javascripts/components/articles.jsx';
+import Articles from '../assets/javascripts/components/articles';
 import { markdown } from '../helpers/markdown';
 import fs from 'fs';
 
