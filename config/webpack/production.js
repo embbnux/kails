@@ -15,8 +15,8 @@ config.output = _.merge(config.output, {
 config.plugins.push(
   new webpack.optimize.UglifyJsPlugin(),
   new webpack.optimize.CommonsChunkPlugin('application', 'application_bundle-[hash].js'),
-  new webpack.optimize.OccurenceOrderPlugin(),
-  new ExtractTextPlugin('[name]_bundle-[hash].css', {
+  new ExtractTextPlugin({
+    filename: '[name]_bundle-[hash].css',
     allChunks: true
   }),
   new webpack.DefinePlugin({
