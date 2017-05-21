@@ -1,13 +1,11 @@
-var base = require('./base.js');
-// var path = require('path');
-var _ = require('lodash');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-// var publicPath = path.resolve(__dirname, '../', '../', 'public', 'assets');
+const base = require('./base.js');
+// const path = require('path');
+const _ = require('lodash');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const publicPath = path.resolve(__dirname, '../', '../', 'public', 'assets');
 
-var config = _.merge(base, {
-  debug: true,
-  outputPathinfo: true,
-  displayErrorDetails: true,
+const config = _.merge(base, {
   devtool: 'cheap-module-eval-source-map',
   output: {
     publicPath: '/assets/'
@@ -28,8 +26,14 @@ var config = _.merge(base, {
 });
 
 config.plugins.push(
-  new ExtractTextPlugin('[name]_bundle.css', {
+  new ExtractTextPlugin({
+    filename: '[name]_bundle.css',
     allChunks: true
+  }),
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify('development')
+    }
   })
 );
 

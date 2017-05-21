@@ -4,10 +4,10 @@ const publicPath = path.resolve(__dirname, '../', '../', 'public', 'assets');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const assetHost = require('../config').assetHost;
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const stylelint = require('stylelint');
-const postcssImport = require('postcss-import');
+// const stylelint = require('stylelint');
+// const postcssImport = require('postcss-import');
 // const cssnext = require('postcss-cssnext');
-const postcssReporter = require('postcss-reporter');
+// const postcssReporter = require('postcss-reporter');
 
 module.exports = {
   context: path.resolve(__dirname, '../', '../'),
@@ -17,20 +17,21 @@ module.exports = {
     editor: './app/assets/javascripts/editor.js'
   },
   node: {
-    fs: "empty"
+    fs: 'empty'
   },
   module: {
-    preLoaders: [{
+    rules: [{
       test: /\.js$/,
+      enforce: 'pre',
       loader: 'eslint-loader',
       exclude: /node_modules/
-    }],
-    loaders: [{
+    },{
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      loader: ['babel-loader'],
-      query: {
-        presets: ['react', 'es2015']
+      loader: 'babel-loader',
+      options: {
+        babelrc: false,
+        presets: ['es2015', 'react']
       }
     },{
       test: /\.coffee$/,
@@ -47,15 +48,15 @@ module.exports = {
     },
     {
       test: /\.css$/,
-      loader: ExtractTextPlugin.extract('style', 'css!postcss')
+      loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', 'postcss-loader'] }),
     },
     {
       test: /\.scss$/,
-      loader: ExtractTextPlugin.extract('style', 'css!sass')
+      loader: ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', 'sass-loader'] })
     }]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.coffee', '.json']
+    extensions: ['.js', '.jsx', '.coffee', '.json']
   },
   output: {
     path: publicPath,
@@ -72,22 +73,18 @@ module.exports = {
       fileName: 'kails_manifest.json'
     })
   ],
-  eslint: {
-    configFile: '.eslintrc.json',
-    failOnError: false
-  },
-  postcss: function(webpack) {
-    return [
-      postcssImport({addDependencyTo: webpack}),
-      stylelint({
-        config: require('../stylelint.config.js'),
-        failOnError: true
-      }),
-      // do not autoprefixer the css because of style lint in development env,
-      // whereas it will be called in production env, see production.config.js
+  // postcss: function(webpack) {
+  //   return [
+  //     postcssImport({addDependencyTo: webpack}),
+  //     stylelint({
+  //       config: require('../stylelint.config.js'),
+  //       failOnError: true
+  //     }),
+  //     // do not autoprefixer the css because of style lint in development env,
+  //     // whereas it will be called in production env, see production.config.js
 
-      // cssnext({autoprefixer: {browsers: "ie >= 9, ..."}}),
-      postcssReporter({clearMessages: true})
-    ];
-  }
+  //     // cssnext({autoprefixer: {browsers: "ie >= 9, ..."}}),
+  //     postcssReporter({clearMessages: true})
+  //   ];
+  // }
 };
