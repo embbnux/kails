@@ -15,9 +15,9 @@ const index = async (ctx, _next) => {
       attributes: ['id', 'name']
     }],
     attributes: ['id', 'title', 'description', 'created_at'],
-    order: 'created_at DESC',
+    order: [['created_at', 'DESC']],
     offset: pageOffset,
-    limit: 10
+    limit: 10,
   };
   const [articleCount, articles] = await Promise.all([
     models.Article.count(),

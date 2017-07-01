@@ -9,6 +9,7 @@ export default function(sequelize, DataTypes) {
     },
     name: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         notEmpty: true,
         len: [1, 50]
@@ -16,10 +17,15 @@ export default function(sequelize, DataTypes) {
     },
     email: {
       type: DataTypes.STRING,
+      unique: true,
+      allowNull: false,
       validate: {
         notEmpty: true,
         isEmail: true
-      }
+      },
+      set(val) {
+        this.setDataValue('email', val.toLowerCase());
+      },
     },
     passwordDigest: {
       type: DataTypes.STRING,
@@ -33,7 +39,8 @@ export default function(sequelize, DataTypes) {
       type: DataTypes.VIRTUAL,
       allowNull: false,
       validate: {
-        notEmpty: true
+        notEmpty: true,
+        len: [8, 128]
       }
     },
     passwordConfirmation: {
@@ -42,49 +49,40 @@ export default function(sequelize, DataTypes) {
   },{
     underscored: true,
     tableName: 'users',
-    indexes: [{ unique: true, fields: ['email'] }],
-    classMethods: {
-      associate: function(models) {
-        User.hasMany(models.Article, { foreignKey: 'user_id' });
-      }
-    },
-    instanceMethods: {
-      authenticate: function(value) {
-        if (bcrypt.compareSync(value, this.passwordDigest)){
-          return this;
-        }
-        else{
-          return false;
-        }
-      }
-    }
   });
-  function hasSecurePassword(user, options, callback) {
-    if (user.password != user.passwordConfirmation) {
-      throw new Error('Password confirmation doesn\'t match Password');
+
+  User.associate = function(models) {
+    User.hasMany(models.Article, { foreignKey: 'user_id' });
+  };
+
+  User.prototype.authenticate = function(value) {
+    if (bcrypt.compareSync(value, this.passwordDigest)){
+      return this;
+    } else{
+      return false;
     }
-    bcrypt.hash(user.get('password'), 10, function(err, hash) {
-      if (err) return callback(err);
-      user.set('passwordDigest', hash);
-      return callback(null, options);
+  };
+
+  function hasSecurePassword(user) {
+    if (user.password != user.passwordConfirmation) {
+      return sequelize.Promise.reject(
+        new Error('Password confirmation doesn\'t match Password')
+      );
+    }
+    return bcrypt.hash(user.password, 10).then(function(hash) {
+      user.passwordDigest = hash;
     });
   }
-  User.beforeCreate(function(user, options, callback) {
-    user.email = user.email.toLowerCase();
+
+  User.beforeCreate((user) => {
     if (user.password){
-      hasSecurePassword(user, options, callback);
-    }
-    else{
-      return callback(null, options);
+      return hasSecurePassword(user);
     }
   });
-  User.beforeUpdate(function(user, options, callback) {
-    user.email = user.email.toLowerCase();
+
+  User.beforeUpdate((user) => {
     if (user.password){
-      hasSecurePassword(user, options, callback);
-    }
-    else{
-      return callback(null, options);
+      return hasSecurePassword(user);
     }
   });
   return User;
