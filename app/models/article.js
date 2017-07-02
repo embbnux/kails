@@ -11,6 +11,7 @@ function ArticleModel(sequelize, DataTypes) {
     },
     title: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         notEmpty: true,
         len: [1, 100]
@@ -18,6 +19,7 @@ function ArticleModel(sequelize, DataTypes) {
     },
     description: {
       type: DataTypes.STRING,
+      allowNull: false,
       validate: {
         notEmpty: true,
         len: [1, 250]
@@ -25,6 +27,7 @@ function ArticleModel(sequelize, DataTypes) {
     },
     content: {
       type: DataTypes.TEXT,
+      allowNull: false,
       validate: {
         notEmpty: true
       }
@@ -34,17 +37,17 @@ function ArticleModel(sequelize, DataTypes) {
     createdAt: 'created_at',
     updatedAt: 'updated_at',
     tableName: 'articles',
-    classMethods: {
-      associate: function(models) {
-        Article.belongsTo(models.User, { foreignKey: 'user_id' });
-      }
-    },
     getterMethods : {
       createdAt: function() {
         return this.created_at;
       }
     }
   });
+
+  Article.associate = function(models) {
+    Article.belongsTo(models.User, { foreignKey: 'user_id' });
+  };
+
   return Article;
 }
 
