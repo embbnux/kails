@@ -1,5 +1,6 @@
 import React, { Component }   from 'react';
 import Article from './article';
+import PropTypes from 'prop-types';
 
 class Articles extends Component {
   constructor(props) {
@@ -21,7 +22,7 @@ class Articles extends Component {
 }
 
 Articles.propTypes = {
-  articles: React.PropTypes.array.isRequired
+  articles: PropTypes.array.isRequired
 };
 
 export default Articles;

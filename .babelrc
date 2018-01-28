@@ -1,7 +1,11 @@
 {
   "presets": [
-    "es2015-node",
-    "stage-0",
+    ["env", {
+      "targets": {
+      	"node": true
+      }
+    }],
     "react"
-  ]
+  ],
+  "plugins": ["transform-object-rest-spread"]
 }

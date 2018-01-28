@@ -1,4 +1,4 @@
-FROM node:6.7
+FROM node:8
 
 ENV APP_DIR /kails
 RUN mkdir $APP_DIR

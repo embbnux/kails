@@ -1,5 +1,6 @@
 import React, { Component }  from 'react';
 import moment from 'moment';
+import PropTypes from 'prop-types';
 
 class TimeAgo extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class TimeAgo extends Component {
 }
 
 TimeAgo.propTypes = {
-  time: React.PropTypes.string.isRequired
+  time: PropTypes.string.isRequired
 };
 
 export default TimeAgo;
