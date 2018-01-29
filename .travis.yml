@@ -1,8 +1,7 @@
 language: node_js
 node_js:
-  - "6"
-  - "7"
   - "8"
+  - "9"
 addons:
   apt:
     sources:
@@ -16,7 +15,7 @@ services:
   - postgresql
   - redis-server
 install:
-  - npm install
+  - yarn install
 before_script:
   - psql -c 'create database kails_test;' -U postgres
 script:
