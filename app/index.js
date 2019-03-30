@@ -1,9 +1,7 @@
 import Koa from 'koa';
-import session from 'koa-generic-session';
+import session from 'koa-session';
 import CSRF from 'koa-csrf';
 import views from 'koa-views';
-import convert from 'koa-convert';
-import json from 'koa-json';
 import bodyParser from 'koa-bodyparser';
 import methodOverride from 'koa-methodoverride';
 import logger from 'koa-logger';
@@ -11,15 +9,9 @@ import flashMessage from 'koa-flash-message';
 
 import config from '../config/config';
 import router from './routes';
-import koaRedis from 'koa-redis';
 import models from './models';
 import middlewares from './middlewares';
 import cacheMiddle from './middlewares/cache';
-
-
-const redisStore = koaRedis({
-  url: config.redisUrl
-});
 
 const app = new Koa();
 
@@ -27,14 +19,15 @@ app.keys = [config.secretKeyBase];
 
 // not serve static when deploy
 if(config.serveStatic){
-  app.use(convert(require('koa-static')(__dirname + '/../public')));
+  app.use(require('koa-static')(__dirname + '/../public'));
 }
 
-app.use(convert(session({
-  store: redisStore,
+app.use(session({
   prefix: 'kails:sess:',
-  key: 'kails.sid'
-})));
+  key: 'kails.sid',
+  httpOnly: true,
+  signed: true,
+}, app));
 
 app.use(cacheMiddle());
 
@@ -47,8 +40,8 @@ app.use(methodOverride((req, _res) => {
     return method;
   }
 }));
-app.use(convert(json()));
-app.use(convert(logger()));
+
+app.use(logger());
 
 //views with pug
 app.use(views(__dirname + '/views', { extension: 'pug' }));

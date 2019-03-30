@@ -10,7 +10,7 @@ This project is like Ruby on Rails Project:
 * Database (postgres), ORM(sequelize)
 * migration(sequelize-cli)
 * assets compile(webpack)
-* Session with redis
+* Session
 * Password with bcrypt
 * Testing (mocha)
 * Lint (eslint)

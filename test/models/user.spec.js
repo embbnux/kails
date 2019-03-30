@@ -41,7 +41,7 @@ describe('User Model', () => {
         expect(true).to.equal(false);
       }).catch((error) => {
         const message = error.message;
-        expect(message).to.equal('Validation Error');
+        expect(message).to.equal('notNull Violation: User.password cannot be null');
       });
     });
   });
