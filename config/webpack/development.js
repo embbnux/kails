@@ -2,7 +2,7 @@ const base = require('./base.js');
 // const path = require('path');
 const _ = require('lodash');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const publicPath = path.resolve(__dirname, '../', '../', 'public', 'assets');
 
 const config = _.merge(base, {
@@ -26,9 +26,8 @@ const config = _.merge(base, {
 });
 
 config.plugins.push(
-  new ExtractTextPlugin({
-    filename: '[name]_bundle.css',
-    allChunks: true
+  new MiniCssExtractPlugin({
+    filename: '[name]_bundle.css'
   }),
   new webpack.DefinePlugin({
     'process.env': {
@@ -36,5 +35,6 @@ config.plugins.push(
     }
   })
 );
+config.mode = 'development';
 
 module.exports = config;
