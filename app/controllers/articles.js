@@ -2,12 +2,12 @@ import models from '../models/index';
 import { markdown } from '../helpers/markdown';
 
 const show = async (ctx, _next) => {
-  const article = await models.Article.findById(ctx.params.id);
+  const article = await models.Article.findByPk(ctx.params.id);
   if(article == null){
     ctx.redirect('/');
     return;
   }
-  const author = await models.User.findById(article.userId);
+  const author = await models.User.findByPk(article.userId);
   let canEdit = ctx.state.isUserSignIn && ctx.state.currentUser.id === author.id;
   const articleHtml = await markdown(article.content);
   const locals = {

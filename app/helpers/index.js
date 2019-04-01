@@ -16,7 +16,7 @@ exports.assetUrl = function (asset) {
     url = config.assetHost + '/' + asset;
   }
   else {
-    url = config.assetHost + '/assets/' + publicAsset;
+    url = config.assetHost + publicAsset;
   }
   return url;
 };

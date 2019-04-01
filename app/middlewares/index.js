@@ -26,7 +26,7 @@ async function catchError(ctx, next) {
 async function addHelper(ctx, next) {
   let currentUser = null;
   if(ctx.session.userId){
-    currentUser = await models.User.findById(ctx.session.userId);
+    currentUser = await models.User.findByPk(ctx.session.userId);
   }
   if (!ctx.state) {
     ctx.state = {};

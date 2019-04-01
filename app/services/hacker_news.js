@@ -15,11 +15,15 @@ class HackerNewsService {
         return data;
       }
     }
-    const opts = Object.assign({ dataType: 'json' }, options);
+    const opts = {
+      dataType: 'json',
+      timeout: 10000,
+      ...options
+    };
     const url = `${this.serverUrl}/${api}`;
     const request = await urllib.request(url, opts);
     data = request.data;
-    if(options.cacheKey && data) {
+    if (options.cacheKey && data) {
       await this.ctx.cache.set(options.cacheKey, data, options.cacheExpire);
     }
     return data;

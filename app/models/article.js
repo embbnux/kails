@@ -1,5 +1,10 @@
-function ArticleModel(sequelize, DataTypes) {
-  const Article = sequelize.define('Article', {
+import { Model } from 'sequelize';
+
+// module.exports for Sequelize import
+module.exports = (sequelize, DataTypes) => {
+  class Article extends Model {}
+
+  Article.init({
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -32,7 +37,8 @@ function ArticleModel(sequelize, DataTypes) {
         notEmpty: true
       }
     }
-  },{
+  }, {
+    sequelize,
     underscored: true,
     createdAt: 'created_at',
     updatedAt: 'updated_at',
@@ -49,6 +55,4 @@ function ArticleModel(sequelize, DataTypes) {
   };
 
   return Article;
-}
-
-export default ArticleModel;
+};

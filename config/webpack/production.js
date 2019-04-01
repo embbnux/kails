@@ -1,10 +1,7 @@
 const base = require('./base.js');
 const _ = require('lodash');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-// const postcssImport = require('postcss-import');
-// const cssnext = require('postcss-cssnext');
-// const postcssReporter = require('postcss-reporter');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = _.merge({}, base);
 
@@ -13,11 +10,8 @@ config.output = _.merge(config.output, {
 });
 
 config.plugins.push(
-  new webpack.optimize.UglifyJsPlugin(),
-  new webpack.optimize.CommonsChunkPlugin({ name: 'application', filename: 'application_bundle-[hash].js' }),
-  new ExtractTextPlugin({
-    filename: '[name]_bundle-[hash].css',
-    allChunks: true
+  new MiniCssExtractPlugin({
+    filename: '[name]_bundle-[hash].css'
   }),
   new webpack.DefinePlugin({
     'process.env': {
@@ -25,13 +19,9 @@ config.plugins.push(
     }
   })
 );
-
-// config.postcss = function(webpack) {
-//   return [
-//     postcssImport({addDependencyTo: webpack}),
-//     cssnext({autoprefixer: {browsers: 'ie >= 9, ...'}}),
-//     postcssReporter({clearMessages: true})
-//   ];
-// };
+config.optimization = {
+  minimize: true
+};
+config.mode = 'production';
 
 module.exports = config;

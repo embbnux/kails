@@ -1,7 +1,19 @@
+import { Model } from 'sequelize';
 import bcrypt from 'bcrypt';
 
-export default function(sequelize, DataTypes) {
-  const User = sequelize.define('User', {
+// module.exports for Sequelize import
+module.exports = function(sequelize, DataTypes) {
+  class User extends Model {
+    authenticate(value) {
+      if (bcrypt.compareSync(value, this.passwordDigest)){
+        return this;
+      } else{
+        return false;
+      }
+    }
+  }
+
+  User.init({
     id: {
       type: DataTypes.INTEGER,
       primaryKey: true,
@@ -46,7 +58,8 @@ export default function(sequelize, DataTypes) {
     passwordConfirmation: {
       type: DataTypes.VIRTUAL
     }
-  },{
+  }, {
+    sequelize,
     underscored: true,
     tableName: 'users',
   });
@@ -55,19 +68,9 @@ export default function(sequelize, DataTypes) {
     User.hasMany(models.Article, { foreignKey: 'user_id' });
   };
 
-  User.prototype.authenticate = function(value) {
-    if (bcrypt.compareSync(value, this.passwordDigest)){
-      return this;
-    } else{
-      return false;
-    }
-  };
-
   function hasSecurePassword(user) {
     if (user.password != user.passwordConfirmation) {
-      return sequelize.Promise.reject(
-        new Error('Password confirmation doesn\'t match Password')
-      );
+      throw new Error('Password confirmation doesn\'t match Password');
     }
     return bcrypt.hash(user.password, 10).then(function(hash) {
       user.passwordDigest = hash;
@@ -86,4 +89,4 @@ export default function(sequelize, DataTypes) {
     }
   });
   return User;
-}
+};

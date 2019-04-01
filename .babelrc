@@ -1,11 +1,10 @@
 {
   "presets": [
-    ["env", {
+    ["@babel/preset-env", {
       "targets": {
-      	"node": true
+        "node": "current"
       }
     }],
-    "react"
-  ],
-  "plugins": ["transform-object-rest-spread"]
+    "@babel/preset-react"
+  ]
 }
