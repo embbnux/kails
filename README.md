@@ -120,6 +120,8 @@ npm run console
 ## Blog
 
 * [What about Kails](https://www.embbnux.com/2016/09/04/kails_with_koa2_like_ruby_on_rails/)
+* [What about Kails (English)](https://developpaper.com/kails-an-open-source-project-of-nodejs-similar-to-rails-based-on-koa2/)
+* [What about Kails (Japanese)](https://simple-asta.blogspot.com/2019/08/kails-an-open-source-project-of-nodejs-similar-to-rails-based-on-koa2.html)
 
 ## License
 
