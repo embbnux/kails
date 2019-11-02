@@ -58,7 +58,7 @@
     "react-router-redux": "^4.0.5",
     "redis": "^2.8.0",
     "redux": "^3.5.2",
-    "sequelize": "^5.2.7",
+    "sequelize": "^5.15.1",
     "sequelize-cli": "^5.4.0",
     "simplemde": "^1.11.2",
     "urllib": "^2.33.2",
