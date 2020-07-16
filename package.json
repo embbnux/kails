@@ -43,7 +43,7 @@
     "koa-session": "^5.10.1",
     "koa-static": "^5.0.0",
     "koa-views": "^6.2.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "markdown-it": "^8.4.2",
     "moment": "^2.24.0",
     "pg": "^7.9.0",
