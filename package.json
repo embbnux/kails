@@ -28,7 +28,7 @@
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
     "@babel/runtime": "^7.3.4",
-    "bcrypt": "^3.0.5",
+    "bcrypt": "^5.0.0",
     "bootstrap": "^3.3.6",
     "font-awesome": "^4.6.3",
     "immutable": "^3.8.1",
