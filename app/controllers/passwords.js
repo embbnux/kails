@@ -1,6 +1,6 @@
 async function edit(ctx, _next) {
   const locals = {
-    title: '修改密码'
+    title: 'Edit Password'
   };
   await ctx.render('passwords/edit', locals);
 }
