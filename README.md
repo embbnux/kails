@@ -21,7 +21,7 @@ This project is like Ruby on Rails Project:
 
 ## Requirements
 
-* node __^8.0.0__
+* node __^10.0.0__
 * npm __^5.0.0__
 
 ## Features

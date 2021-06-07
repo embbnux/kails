@@ -19,7 +19,7 @@
     "test": "npm run mocha",
     "assets_build": "webpack --config config/webpack/development.js",
     "assets_compile": "NODE_ENV=production node_modules/.bin/webpack --config config/webpack/production.js -p",
-    "webpack_dev": "webpack --config config/webpack/development.js --progress --colors --watch",
+    "webpack_dev": "webpack --config config/webpack/development.js --progress --watch",
     "lint": "eslint . --ext .js",
     "db:migrate": "sequelize db:migrate",
     "db:rollback": "sequelize db:migrate:undo",
