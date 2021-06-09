@@ -6,6 +6,7 @@
   "main": "build/index.js",
   "scripts": {
     "console": "babel-node app/index.js console",
+    "dev": "nodemon app/index.js",
     "start": "nodemon app/index.js & npm run webpack_dev",
     "app": "babel-node app/index.js",
     "build": "rm -rf build/ && babel -d build app && cp -r app/views build/views",
@@ -46,7 +47,7 @@
     "lodash": "^4.17.21",
     "markdown-it": "^8.4.2",
     "moment": "^2.24.0",
-    "pg": "^7.9.0",
+    "pg": "^8.2.0",
     "pg-hstore": "^2.3.2",
     "pm2": "^3.4.1",
     "prop-types": "^15.6.0",
@@ -88,7 +89,7 @@
     "file-loader": "^3.0.1",
     "mini-css-extract-plugin": "^0.5.0",
     "mocha": "^3.1.2",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.14.0",
     "nodemon": "^1.18.10",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
@@ -101,6 +102,6 @@
     "webpack-manifest-plugin": "^2.0.4"
   },
   "engines": {
-    "node": ">=8"
+    "node": ">=10"
   }
 }
