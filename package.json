@@ -6,7 +6,6 @@
   "main": "build/index.js",
   "scripts": {
     "console": "babel-node app/index.js console",
-    "dev": "nodemon app/index.js",
     "start": "nodemon app/index.js & npm run webpack_dev",
     "app": "babel-node app/index.js",
     "build": "rm -rf build/ && babel -d build app && cp -r app/views build/views",
@@ -27,8 +26,6 @@
     "create:migration": "sequelize migration:create"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.2.5",
-    "@babel/runtime": "^7.3.4",
     "bcrypt": "^5.0.1",
     "bootstrap": "^3.3.6",
     "font-awesome": "^4.6.3",
@@ -49,7 +46,7 @@
     "moment": "^2.24.0",
     "pg": "^8.2.0",
     "pg-hstore": "^2.3.2",
-    "pm2": "^3.4.1",
+    "pm2": "^4.5.6",
     "prop-types": "^15.6.0",
     "pug": "^3.0.1",
     "react": "^16.2.0",
@@ -90,15 +87,15 @@
     "mini-css-extract-plugin": "^0.5.0",
     "mocha": "^3.1.2",
     "node-sass": "^4.14.0",
-    "nodemon": "^1.18.10",
+    "nodemon": "^2.0.7",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "supertest": "^1.2.0",
     "url-loader": "^1.1.2",
-    "webpack": "^4.44.2",
+    "webpack": "^4.46.0",
     "webpack-cli": "^4.2.0",
-    "webpack-dev-server": "^3.11.0",
+    "webpack-dev-server": "^3.11.2",
     "webpack-manifest-plugin": "^2.0.4"
   },
   "engines": {
