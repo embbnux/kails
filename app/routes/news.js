@@ -1,4 +1,4 @@
-import Router from 'koa-router';
+import Router from '@koa/router';
 import news from '../controllers/news';
 
 const router = Router({
