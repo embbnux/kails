@@ -1,9 +1,17 @@
 import supertest from 'supertest';
 import app from '../../app/index.js';
 
-const request = supertest.agent(app.listen());
+let server;
+let request;
 
 describe('News Controllers', () => {
+  before((done) => {
+    server = app.listen(done);
+    request = supertest.agent(server);
+  });
+  after((done) => {
+    server.close(done);
+  });
   describe('GET index /', () => {
     it('should return 200', (done) => {
       request
