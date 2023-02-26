@@ -48,3 +48,4 @@ jobs:
           DATABASE_USERNAME_TEST: postgres
           DATABASE_PASSWORD_TEST: password
           DATABASE_NAME_TEST: kails_test
+          REDIS_URL_TEST: redis://redis:6379/1
