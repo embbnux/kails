@@ -21,7 +21,7 @@ fs
   })
   .forEach(function(file) {
     const modelGenerator = require(path.join(__dirname, file));
-    const model = modelGenerator(sequelize, Sequelize.DataTypes)
+    const model = modelGenerator(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 

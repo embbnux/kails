@@ -1,4 +1,4 @@
- import redis from '../../config/redis';
+import redis from '../../config/redis';
 
 module.exports = function (options) {
   const middleOptions = options || {};
