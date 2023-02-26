@@ -44,6 +44,7 @@ jobs:
           PGPASSWORD: password
       - run: yarn
       - run: yarn lint
+      - run: yarn assets_compile
       - run: yarn test
         env:
           NODE_ENV: test
