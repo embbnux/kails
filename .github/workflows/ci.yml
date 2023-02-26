@@ -5,12 +5,13 @@ on: [push, pull_request]
 jobs:
   test:
     runs-on: ubuntu-latest
-    container: node:14
     services:
       postgres:
         image: postgres
         env:
           POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -18,6 +19,8 @@ jobs:
           --health-retries 5
       redis:
         image: redis
+        ports:
+          - 6379:6379
         options: >-
           --health-cmd "redis-cli ping"
           --health-interval 10s
@@ -26,13 +29,17 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v3
+        with:
+          node-version: 14.x
       - name: Install dependencies
         run: |
           apt-get update
           apt-get install --yes build-essential
           apt-get install --yes postgresql-client
       - name: Setup database
-        run: psql -h postgres -c 'create database kails_test;' -U postgres
+        run: psql -h localhost -c 'create database kails_test;' -U postgres
         env:
           PGPASSWORD: password
       - run: yarn
@@ -40,8 +47,7 @@ jobs:
       - run: yarn test
         env:
           NODE_ENV: test
-          DATABASE_HOST_TEST: postgres
+          DATABASE_HOST_TEST: localhost
           DATABASE_USERNAME_TEST: postgres
           DATABASE_PASSWORD_TEST: password
           DATABASE_NAME_TEST: kails_test
-          REDIS_URL_TEST: redis://redis:6379/1
