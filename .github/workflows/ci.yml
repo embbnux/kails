@@ -36,7 +36,7 @@ jobs:
           apt-get install --yes build-essential
           apt-get install --yes postgresql-client
       - name: Setup database
-        run: psql -c 'create database kails_test;' -U postgres
+        run: psql -h postgres -c 'create database kails_test;' -U postgres
         env:
           PGPASSWORD: password
       - run: yarn
@@ -44,6 +44,7 @@ jobs:
       - run: yarn test
         env:
           NODE_ENV: test
+          DATABASE_HOST_TEST: postgres
           DATABASE_USERNAME_TEST: postgres
           DATABASE_PASSWORD_TEST: password
           DATABASE_NAME_TEST: kails_test
