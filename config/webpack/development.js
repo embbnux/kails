@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 // const publicPath = path.resolve(__dirname, '../', '../', 'public', 'assets');
 
 const config = _.merge(base, {
-  devtool: 'cheap-module-eval-source-map',
+  devtool: 'eval-source-map',
   output: {
     publicPath: '/assets/'
   }

@@ -1,17 +1,17 @@
 import redis from '../config/redis';
 import models from '../app/models';
 
-beforeEach('Clean Redis', function () {
-  redis.flushdb();
+beforeEach('Clean Redis', async () => {
+  await redis.sendCommand(['FLUSHDB']);
 });
 
-beforeEach('Clean Database', function () {
+beforeEach('Clean Database', async () => {
   const sequelize = models.sequelize;
-  return sequelize.sync({ force: true });
+  await sequelize.sync({ force: true });
 });
 
-after('Close database', function () {
+after('Close database', async () => {
   const sequelize = models.sequelize;
-  sequelize.close();
-  redis.quit();
+  await sequelize.close();
+  await redis.quit();
 });

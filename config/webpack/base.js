@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const ManifestPlugin = require('webpack-manifest-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const ESLintPlugin = require('eslint-webpack-plugin');
 const assetHost = require('../config').assetHost;
 
 const publicPath = path.resolve(__dirname, '../', '../', 'public', 'assets');
@@ -13,16 +14,8 @@ module.exports = {
     articles: './app/assets/javascripts/articles.js',
     editor: './app/assets/javascripts/editor.js'
   },
-  node: {
-    fs: 'empty'
-  },
   module: {
-    rules: [{
-      test: /\.js|\.jsx/,
-      enforce: 'pre',
-      use: 'eslint-loader',
-      exclude: /node_modules/
-    },
+    rules: [
     {
       test: /\.js|\.jsx/,
       exclude: /node_modules/,
@@ -36,7 +29,6 @@ module.exports = {
                   'Chrome >= 71',
                   'FireFox >= 60',
                   'Safari >= 10',
-                  'Explorer 11',
                 ]
               }
             }],
@@ -47,11 +39,11 @@ module.exports = {
     },
     {
       test: /\.(woff|woff2|eot|ttf|otf)\??.*$/,
-      use: 'url-loader?limit=8192&name=[name].[ext]'
+      type: 'asset/resource'
     },
     {
       test: /\.(jpe?g|png|gif|svg)\??.*$/,
-      use: 'url-loader?limit=8192&name=[name].[ext]'
+      type: 'asset/resource'
     },
     {
       test: /\.css|\.sass|\.scss/,
@@ -61,9 +53,13 @@ module.exports = {
         {
           loader: 'postcss-loader',
           options: {
-            config: {
-              path: path.resolve(__dirname, './postcss.config.js')
-            }
+            postcssOptions: {
+              plugins: [
+                [
+                  "postcss-preset-env",
+                ],
+              ],
+            },
           }
         },
         'sass-loader',
@@ -84,8 +80,11 @@ module.exports = {
       jQuery: 'jquery'
     }),
     // new webpack.HotModuleReplacementPlugin(),
-    new ManifestPlugin({
+    new WebpackManifestPlugin({
       fileName: 'kails_manifest.json'
-    })
+    }),
+    new ESLintPlugin({
+      extensions: ['js', 'jsx'],
+    }),
   ],
 };

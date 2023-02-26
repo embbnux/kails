@@ -21,14 +21,14 @@ This project is like Ruby on Rails Project:
 
 ## Requirements
 
-* node __^10.0.0__
-* npm __^5.0.0__
+* node >= __14.0.0__
+* yarn
 
 ## Features
 
 * User system
 * Post article with markdown editor
-* Hacker news middlelayer
+* Hacker news middle layer
 
 ## Structure
 
@@ -70,16 +70,17 @@ This project is like Ruby on Rails Project:
 
   ```bash
   git clone https://github.com/embbnux/kails.git
-  npm install
-  npm run db:migrate
-  npm run start
+  yarn
+  yarn db:migrate
+  yarn assets_build
+  yarn start
   ```
 
 5. Visit http://localhost:3000/
 6. console
 
   ```
-  $ npm run console
+  $ yarn console
   > models.User.create({ name: 'test', email: 'kails@kails.org', password: '12345678', passwordConfirmation: '12345678' }).then(function(user) { console.log(user) })
   > models.User.findOne({ where: { email: 'kails@kails.org' } }).then(function(user) { console.log(user) })
   ```
@@ -90,27 +91,27 @@ This project is like Ruby on Rails Project:
 
 [How to Deploy Kails With Docker](https://github.com/embbnux/kails/wiki/How-to-Deploy-Kails-with-docker)
 
-## Commands with npm
+## Commands with yarn
 
 ```
 # migrate database
-npm run db:migrate
-NODE_ENV=test npm run db:migrate
+yarn db:migrate
+NODE_ENV=test yarn db:migrate
 # run for development. it start app and webpack dev server
-npm start
+yarn start
 # run the app
-npm run app
+yarn app
 # run the lint
-npm run lint
+yarn lint
 # run test
-npm test
+yarn test
 # deploy
-npm run build
-npm run assets_compile
+yarn build
+yarn assets_compile
 NODE_ENV=production npm run db:migrate
-npm run pm2
+yarn pm2
 # console
-npm run console
+yarn console
 ```
 
 ## Author

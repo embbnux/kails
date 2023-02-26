@@ -1,0 +1,50 @@
+name: CI Pipeline
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: node:14
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+      redis:
+        image: redis
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install dependencies
+        run: |
+          apt-get update
+          apt-get install --yes build-essential
+          apt-get install --yes postgresql-client
+      - name: Setup database
+        run: psql -c 'create database kails_test;' -U postgres
+        env:
+          PGPASSWORD: password
+      - run: yarn
+      - run: yarn lint
+      - run: yarn test
+        env:
+          NODE_ENV: test
+          DATABASE_USERNAME_TEST: postgres
+          DATABASE_PASSWORD_TEST: password
+          DATABASE_NAME_TEST: kails_test
+          DATABASE_HOST_TEST: localhost

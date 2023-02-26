@@ -1,6 +1,7 @@
-var redis = require('redis');
-var config = require('./config');
+const { createClient } = require('redis');
+const config = require('./config');
 
-var redisClient = redis.createClient(config.redisUrl, {});
+const redisClient = createClient(config.redisUrl, {});
+redisClient.connect();
 
 module.exports = redisClient;
