@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import Sequelize from 'sequelize';
+import { Sequelize } from 'sequelize';
 import { env } from '../../config/config.js';
 import database from '../../config/database.js';
 
@@ -20,7 +20,8 @@ fs
     return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
   .forEach(function(file) {
-    var model = sequelize.import(path.join(__dirname, file));
+    const modelGenerator = require(path.join(__dirname, file));
+    const model = modelGenerator(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 

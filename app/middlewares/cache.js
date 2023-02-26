@@ -1,4 +1,3 @@
-import { promisify } from 'util';
 import redis from '../../config/redis';
 
 module.exports = function (options) {
@@ -22,9 +21,6 @@ module.exports = function (options) {
     redisAvailable = true;
   });
 
-  const getData = promisify(redisClient.get).bind(redisClient);
-  const setData = promisify(redisClient.set).bind(redisClient);
-
   const setCache = async function(key, value, cacheOptions) {
     if(!redisAvailable){
       return;
@@ -36,7 +32,9 @@ module.exports = function (options) {
     key = prefix + key;
     const tty = currentOptions.expire || expire;
     value = JSON.stringify(value);
-    await setData(key, value, 'EX', tty);
+    await redisClient.set(key, value, {
+      'EX': tty
+    });
   };
 
   const getCache = async function(key) {
@@ -44,7 +42,7 @@ module.exports = function (options) {
       return null;
     }
     key = prefix + key;
-    let data = await getData(key);
+    let data = await redisClient.get(key);
     if(data) {
       data = JSON.parse(data.toString());
     }
