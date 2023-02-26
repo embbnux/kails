@@ -12,10 +12,12 @@ if (fs.existsSync(manifestPath)) {
 exports.assetUrl = function (asset) {
   const publicAsset = manifest[asset];
   let url = null;
-  if(publicAsset === undefined) {
+  if (!publicAsset) {
     url = config.assetHost + '/' + asset;
-  }
-  else {
+  } else {
+    if (publicAsset.indexOf('http') === 0) {
+      return publicAsset;
+    }
     url = config.assetHost + publicAsset;
   }
   return url;
