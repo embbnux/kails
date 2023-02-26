@@ -1,8 +1,8 @@
-import SimpleMDE from 'simplemde';
+import EasyMDE from 'easymde';
 
-require('simplemde/dist/simplemde.min.css');
+require('easymde/dist/easymde.min.css');
 
-new SimpleMDE({
+new EasyMDE({
   element: document.getElementById('article-editor'),
   spellChecker: false,
   autoDownloadFontAwesome: false,
