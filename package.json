@@ -30,7 +30,7 @@
     "bcrypt": "^5.1.0",
     "bootstrap": "^3.3.6",
     "font-awesome": "^4.6.3",
-    "immutable": "^3.8.1",
+    "immutable": "^3.8.3",
     "jquery": "^3.5.0",
     "koa": "^2.14.1",
     "koa-bodyparser": "^4.3.0",
